@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace API
 {
@@ -23,26 +24,45 @@ namespace API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
+            AdicionarControladores(services);
+            DefinirConfiguracaoSwagger(services);
+        }
+
+        private static void AdicionarControladores(IServiceCollection services)
+        {
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+        }
+
+        private static void DefinirConfiguracaoSwagger(IServiceCollection services)
+        {
+            services.AddSwaggerGen(options =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Motic Avaliação Digital", Version = "v1" });
+                options.CustomOperationIds(d => (d.ActionDescriptor as ControllerActionDescriptor)?.ActionName);
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
             }
+
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions);
+
+            app.UseSwagger(option => { 
+                option.RouteTemplate = swaggerOptions.JsonRoute;
+            });
+
+            app.UseSwaggerUI(option => {
+                option.RoutePrefix = swaggerOptions.RoutePrefix;
+                option.SwaggerEndpoint(swaggerOptions.UIEndpoint, swaggerOptions.Description);
+            });
 
             app.UseHttpsRedirection();
 
