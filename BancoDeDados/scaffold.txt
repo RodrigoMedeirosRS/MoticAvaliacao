@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "User ID=postgres;Password=senha;Server=127.0.0.1;Port=5432;Database=motic_avaliacao;Integrated Security=true;" Npgsql.EntityFrameworkCore.PostgreSQL --startup-project API/ --project DAO/ --table "erro_detran" -f

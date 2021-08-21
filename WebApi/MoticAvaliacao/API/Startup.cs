@@ -12,6 +12,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.EntityFrameworkCore;
+
+using DAO;
+
 
 namespace API
 {
@@ -29,6 +33,11 @@ namespace API
 
             AdicionarControladores(services);
             DefinirConfiguracaoSwagger(services);
+        }
+
+        private static void AdicionarDataContext(IServiceCollection services, string connectionString)
+        {
+            services.AddDbContext<motic_avaliacaoContext>(options => options.UseNpgsql(connectionString));
         }
 
         private static void AdicionarControladores(IServiceCollection services)
