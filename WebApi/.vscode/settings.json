@@ -1,0 +1,16 @@
+{
+  "files.exclude": {
+    "MoticAvaliacao/DTO/obj": true,
+    "MoticAvaliacao/DTO/bin": true,
+    "MoticAvaliacao/DAO/obj": true,
+    "MoticAvaliacao/DAO/bin": true,
+    "MoticAvaliacao/DAL/obj": true,
+    "MoticAvaliacao/DAL/bin": true,
+    "MoticAvaliacao/BLL/obj": true,
+    "MoticAvaliacao/BLL/bin": true,
+    "MoticAvaliacao/API/obj": true,
+    "MoticAvaliacao/API/bin": true,
+    ".vscode": true,
+    ".gitignore": true
+  }
+}
