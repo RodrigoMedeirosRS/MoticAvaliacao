@@ -22,9 +22,7 @@ namespace API
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
-
         public void ConfigureServices(IServiceCollection services)
         {
             AdicionarControladores(services);
@@ -33,30 +31,27 @@ namespace API
             RealizarInjecaoDeDependeciasDAL(services);
             DefinirConfiguracaoSwagger(services);
         }
-
         public static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
-        {
+        {  
+            services.AddScoped<ILoginBLL, LoginBLL>();
             services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<ICadastroBLL, CadastroBLL>();
             services.AddScoped<IAvaliacaoBLL, AvaliacaoBLL>();
         }
-
         public static void RealizarInjecaoDeDependeciasDAL(IServiceCollection services)
         {
+            services.AddScoped<ILoginDAL, LoginDAL>();
             services.AddScoped<ICadastroDAL, CadastroDAL>();
             services.AddScoped<IAvaliacaoDAL, AvaliacaoDAL>();
         }
-
         private static void AdicionarDataContext(IServiceCollection services, string connectionString)
         {
             services.AddDbContext<motic_avaliacaoContext>(options => options.UseNpgsql(connectionString));
         }
-
         private static void AdicionarControladores(IServiceCollection services)
         {
             services.AddControllers();
         }
-
         private static void DefinirConfiguracaoSwagger(IServiceCollection services)
         {
             services.AddSwaggerGen(options =>
@@ -65,7 +60,6 @@ namespace API
                 options.CustomOperationIds(d => (d.ActionDescriptor as ControllerActionDescriptor)?.ActionName);
             });
         }
-
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

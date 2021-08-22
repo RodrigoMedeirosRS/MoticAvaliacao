@@ -30,6 +30,24 @@ PRIMARY KEY(codigo));
 
 
 
+CREATE TABLE administrador (
+  codigo SERIAL  NOT NULL ,
+  avaliador INTEGER   NOT NULL   ,
+PRIMARY KEY(codigo)  ,
+  FOREIGN KEY(avaliador)
+    REFERENCES avaliador(codigo));
+
+
+
+
+CREATE INDEX administrador_FKIndex1 ON administrador (avaliador);
+
+
+CREATE INDEX IFK_Rel_06 ON administrador (avaliador);
+
+
+
+
 CREATE TABLE trabalho (
   codigo SERIAL  NOT NULL ,
   categoria INTEGER   NOT NULL ,

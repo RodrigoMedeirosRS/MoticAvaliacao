@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 using DTO;
 using API.Interface;
@@ -21,12 +18,6 @@ namespace API.Controllers
         {
             BLL = bll;
             Requisicao = requisicao;
-        }
-
-        [HttpPost("LoginAvaliador")]
-        public async Task<RetornoDTO<bool>> LoginAvaliador(LoginDTO loginDTO)
-        {
-            return Requisicao.ExecutarRequisicao<LoginDTO, bool>(loginDTO, BLL.LoginAvaliador).Result;
         }
 
         [HttpPost("CadastrarAvalicao")]

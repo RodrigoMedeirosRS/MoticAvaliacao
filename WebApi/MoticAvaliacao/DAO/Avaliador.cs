@@ -9,6 +9,7 @@ namespace DAO
     {
         public Avaliador()
         {
+            Administradors = new HashSet<Administrador>();
             Avaliacaos = new HashSet<Avaliacao>();
         }
 
@@ -20,6 +21,7 @@ namespace DAO
         public string Email { get; set; }
         public string Telefone { get; set; }
 
+        public virtual ICollection<Administrador> Administradors { get; set; }
         public virtual ICollection<Avaliacao> Avaliacaos { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace DAO
         {
         }
 
+        public virtual DbSet<Administrador> Administradors { get; set; }
         public virtual DbSet<Avaliacao> Avaliacaos { get; set; }
         public virtual DbSet<Avaliador> Avaliadors { get; set; }
         public virtual DbSet<Categorium> Categoria { get; set; }
@@ -26,11 +27,38 @@ namespace DAO
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseNpgsql("User ID=postgres;Password=senha;Server=127.0.0.1;Port=5432;Database=motic_avaliacao;Integrated Security=true;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "pt_BR.UTF-8");
+
+            modelBuilder.Entity<Administrador>(entity =>
+            {
+                entity.HasKey(e => e.Codigo)
+                    .HasName("administrador_pkey");
+
+                entity.ToTable("administrador");
+
+                entity.HasIndex(e => e.Avaliador, "administrador_fkindex1");
+
+                entity.HasIndex(e => e.Avaliador, "ifk_rel_06");
+
+                entity.Property(e => e.Codigo).HasColumnName("codigo");
+
+                entity.Property(e => e.Avaliador).HasColumnName("avaliador");
+
+                entity.HasOne(d => d.AvaliadorNavigation)
+                    .WithMany(p => p.Administradors)
+                    .HasForeignKey(d => d.Avaliador)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("administrador_avaliador_fkey");
+            });
 
             modelBuilder.Entity<Avaliacao>(entity =>
             {

@@ -14,10 +14,6 @@ namespace BLL
         {
             DAL = dal;
         }
-        public async Task<RetornoDTO<bool>> LoginAvaliador(LoginDTO loginDTO)
-        {
-            return new RetornoDTO<bool>();
-        }
         public async Task<RetornoDTO<bool>> CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO)
         {
             return new RetornoDTO<bool>();

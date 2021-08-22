@@ -4,6 +4,8 @@ DROP TABLE avaliacao;
 
 DROP TABLE trabalho;
 
+DROP TABLE administrador;
+
 DROP TABLE avaliador;
 
 DROP TABLE nomecriterio;
