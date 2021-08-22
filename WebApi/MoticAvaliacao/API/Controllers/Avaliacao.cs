@@ -23,15 +23,22 @@ namespace API.Controllers
             Requisicao = requisicao;
         }
 
-        [HttpPost("Teste")]
-        public async Task<RetornoDTO<string>> Teste(string Conteudo)
+        [HttpPost("LoginAvaliador")]
+        public async Task<RetornoDTO<bool>> LoginAvaliador(LoginDTO loginDTO)
         {
-            return new RetornoDTO<string>
-            {
-                Mensagem = "Sucesso",
-                Sucesso = true,
-                Conteudo = "Ola Mundo!"
-            };
+            return Requisicao.ExecutarRequisicao<LoginDTO, bool>(loginDTO, BLL.LoginAvaliador).Result;
+        }
+
+        [HttpPost("CadastrarAvalicao")]
+        public async Task<RetornoDTO<bool>> CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO)
+        {
+            return Requisicao.ExecutarRequisicao<AvaliacaoDTO, bool>(avaliacaoDTO, BLL.CadastrarAvalicao).Result;
+        }
+
+        [HttpPost("ListarAvaliacoes")]
+        public async Task<RetornoDTO<List<AvaliacaoDTO>>> ListarAvaliacoes(ValorDTO qualquerCoisa = null)
+        {
+            return Requisicao.ExecutarRequisicao<List<AvaliacaoDTO>>(BLL.ListarAvaliacoes).Result;
         }
     }
 }
