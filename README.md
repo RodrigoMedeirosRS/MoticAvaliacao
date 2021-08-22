@@ -1,1 +1,1 @@
-# Sistema de Avaliação Digital Motic
+# Motic Avaliação Digital
