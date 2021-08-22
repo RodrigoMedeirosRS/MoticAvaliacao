@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 
 using DTO;
 using BLL.Interface;
+using API.Interface;
 
 namespace API.Controllers
 {
@@ -15,20 +16,17 @@ namespace API.Controllers
     public class Cadastro : ControllerBase
     {
         private ICadastroBLL BLL { get; set; }
-        public Cadastro(ICadastroBLL bll)
+        private IRequisicao Requisicao { get; set; }
+        public Cadastro(ICadastroBLL bll, IRequisicao requisicao)
         {
             BLL = bll;
+            Requisicao = requisicao;
         }
         
-        [HttpPost("Teste")]
-        public async Task<RetornoDTO<string>> Teste(string Conteudo)
+        [HttpPost("CadastrarCategoria")]
+        public async Task<RetornoDTO<bool>> CadastrarCategoria(CriterioDTO criterioDTO)
         {
-            return new RetornoDTO<string>
-            {
-                Mensagem = "Sucesso",
-                Sucesso = true,
-                Conteudo = "Ola Mundo!"
-            };
+            return Requisicao.ExecutarRequisicao<CriterioDTO, bool>(criterioDTO, BLL.CadastrarCriterio).Result;
         }
     }
 }

@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using DAO;
 using BLL;
 using DAL;
+using API.Interface;
 using DAL.Interface;
 using BLL.Interface;
 
@@ -42,6 +43,7 @@ namespace API
 
         public static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
         {
+            services.AddScoped<IRequisicao, Requisicao>();
             services.AddScoped<ICadastroBLL, CadastroBLL>();
             services.AddScoped<IAvaliacaoBLL, AvaliacaoBLL>();
         }

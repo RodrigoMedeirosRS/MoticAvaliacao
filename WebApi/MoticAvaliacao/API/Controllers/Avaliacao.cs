@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using DTO;
+using API.Interface;
 using BLL.Interface;
 
 namespace API.Controllers
@@ -15,9 +16,11 @@ namespace API.Controllers
     public class Avaliacao : ControllerBase
     {
         private IAvaliacaoBLL BLL { get; set; }
-        public Avaliacao(IAvaliacaoBLL bll)
+        private IRequisicao Requisicao { get; set; }
+        public Avaliacao(IAvaliacaoBLL bll, IRequisicao requisicao)
         {
             BLL = bll;
+            Requisicao = requisicao;
         }
 
         [HttpPost("Teste")]
