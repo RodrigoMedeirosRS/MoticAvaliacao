@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 using DTO;
+using BLL.Interface;
 
 namespace API.Controllers
 {
@@ -13,6 +14,12 @@ namespace API.Controllers
     [Route("motic/[controller]")]
     public class Cadastro : ControllerBase
     {
+        private ICadastroBLL BLL { get; set; }
+        public Cadastro(ICadastroBLL bll)
+        {
+            BLL = bll;
+        }
+        
         [HttpPost("Teste")]
         public async Task<RetornoDTO<string>> Teste(string Conteudo)
         {

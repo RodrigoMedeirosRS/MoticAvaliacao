@@ -15,7 +15,10 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 
 using DAO;
-
+using BLL;
+using DAL;
+using DAL.Interface;
+using BLL.Interface;
 
 namespace API
 {
@@ -30,9 +33,23 @@ namespace API
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             AdicionarControladores(services);
+            AdicionarDataContext(services, Configuration.GetConnectionString("motic_avaliacao"));
+            RealizarInjecaoDeDependenciasBLL(services);
+            RealizarInjecaoDeDependeciasDAL(services);
             DefinirConfiguracaoSwagger(services);
+        }
+
+        public static void RealizarInjecaoDeDependenciasBLL(IServiceCollection services)
+        {
+            services.AddScoped<ICadastroBLL, CadastroBLL>();
+            services.AddScoped<IAvaliacaoBLL, AvaliacaoBLL>();
+        }
+
+        public static void RealizarInjecaoDeDependeciasDAL(IServiceCollection services)
+        {
+            services.AddScoped<ICadastroDAL, CadastroDAL>();
+            services.AddScoped<IAvaliacaoDAL, AvaliacaoDAL>();
         }
 
         private static void AdicionarDataContext(IServiceCollection services, string connectionString)
