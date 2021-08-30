@@ -149,7 +149,10 @@ namespace DAO
 
                 entity.Property(e => e.Ativo).HasColumnName("ativo");
 
-                entity.Property(e => e.Nome).HasColumnName("nome");
+                entity.Property(e => e.Nome)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .HasColumnName("nome");
             });
 
             modelBuilder.Entity<Criterio>(entity =>

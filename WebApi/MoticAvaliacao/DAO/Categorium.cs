@@ -13,7 +13,7 @@ namespace DAO
         }
 
         public int Codigo { get; set; }
-        public int Nome { get; set; }
+        public string Nome { get; set; }
         public bool Ativo { get; set; }
 
         public virtual ICollection<Trabalho> Trabalhos { get; set; }

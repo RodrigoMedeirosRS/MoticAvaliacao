@@ -13,8 +13,8 @@ namespace DAL.Utils
             {
                 Nome = avaliador.Nome,
                 Sobrenome = avaliador.Sobrenome,
-                CPF = avaliador.Cpf,
-                Senha = avaliador.Senha,
+                CPF = "",
+                Senha = "",
                 Email = avaliador.Email,
                 Telefone = avaliador.Telefone
             };
@@ -31,5 +31,39 @@ namespace DAL.Utils
                 Telefone = avaliador.Telefone
             };
         } 
+        public static CriterioDTO Mapear(Nomecriterio criterio)
+        {
+            return new CriterioDTO()
+            {
+                Nome = criterio.Nome,
+                Peso = criterio.Peso,
+                Ativo = criterio.Ativo,
+            };
+        }
+        public static Nomecriterio Mapear(CriterioDTO criterio)
+        {
+            return new Nomecriterio()
+            {
+                Nome = criterio.Nome,
+                Peso = criterio.Peso,
+                Ativo = criterio.Ativo,
+            };
+        }
+        public static CategoriaDTO Mapear(Categorium categoria)
+        {
+            return new CategoriaDTO()
+            {
+                Nome = categoria.Nome,
+                Ativo = categoria.Ativo,
+            };
+        }
+        public static Categorium Mapear(CategoriaDTO categoria)
+        {
+            return new Categorium()
+            {
+                Nome = categoria.Nome,
+                Ativo = categoria.Ativo,
+            };
+        }
     }
 }

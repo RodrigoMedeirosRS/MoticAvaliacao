@@ -1,5 +1,5 @@
-using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 using DAO;
 using DTO;
@@ -21,7 +21,7 @@ namespace DAL
             var resultado = (from avaliador in DataContext.Avaliadors
                 where loginDTO.CPF == avaliador.Cpf &&
                     loginDTO.Senha == avaliador.Senha
-                select ConversorUtil.Mapear(avaliador)).FirstOrDefault();
+                select ConversorUtil.Mapear(avaliador)).AsNoTracking().FirstOrDefault();
             return resultado;
         }
 
@@ -33,7 +33,7 @@ namespace DAL
                     on avaliador.Codigo equals administrador.Avaliador
                 where loginDTO.CPF == avaliador.Cpf &&
                     loginDTO.Senha == avaliador.Senha
-                select ConversorUtil.Mapear(avaliador)).FirstOrDefault();
+                select ConversorUtil.Mapear(avaliador)).AsNoTracking().FirstOrDefault();
             return resultado;
         }
     }

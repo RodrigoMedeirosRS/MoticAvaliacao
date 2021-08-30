@@ -8,7 +8,7 @@ namespace BLL.Interface
     public interface ICadastroBLL
     {
         Task<RetornoDTO<bool>> CadastrarAvaliador(AvaliadorDTO avaliadorDTO);
-        Task<RetornoDTO<bool>> CadastrarCategoria(CategoriaDTO trabalhoDTO);
+        Task<RetornoDTO<bool>> CadastrarCategoria(CategoriaDTO categoriaDTO);
         Task<RetornoDTO<bool>> CadastrarCriterio(CriterioDTO criterioDTO);
         Task<RetornoDTO<bool>> CadastrarTrabalho(TrabalhoDTO trabalhoDTO);
         

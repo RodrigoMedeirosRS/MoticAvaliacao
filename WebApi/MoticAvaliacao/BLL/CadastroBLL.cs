@@ -16,36 +16,40 @@ namespace BLL
         }
         public async Task<RetornoDTO<bool>> CadastrarAvaliador(AvaliadorDTO avaliadorDTO)
         {
-            return new RetornoDTO<bool>();
+            DAL.CadastrarAvaliador(avaliadorDTO);
+            return new RetornoDTO<bool>(true);
         }
-        public async Task<RetornoDTO<bool>> CadastrarCategoria(CategoriaDTO trabalhoDTO)
+        public async Task<RetornoDTO<bool>> CadastrarCategoria(CategoriaDTO categoriaDTO)
         {
-            return new RetornoDTO<bool>();
+            DAL.CadastrarCategoria(categoriaDTO);
+            return new RetornoDTO<bool>(true);
         }    
         public async Task<RetornoDTO<bool>> CadastrarCriterio(CriterioDTO criterioDTO)
         {
-            return new RetornoDTO<bool>();
+            DAL.CadastrarCriterio(criterioDTO);
+            return new RetornoDTO<bool>(true);
         }
         public async Task<RetornoDTO<bool>> CadastrarTrabalho(TrabalhoDTO trabalhoDTO)
         {
+            DAL.CadastrarTrabalho(trabalhoDTO);
             return new RetornoDTO<bool>();
         }
         
         public async Task<RetornoDTO<List<AvaliadorDTO>>> ListarAvaliadores(ValorDTO cpf = null)
         {
-            return new RetornoDTO<List<AvaliadorDTO>>();
+            return new RetornoDTO<List<AvaliadorDTO>>(DAL.ListarAvaliador(cpf.Valor));
         }
         public async Task<RetornoDTO<List<CategoriaDTO>>> ListarCategorias(ValorDTO nomeCategoria = null)
         {
-            return new RetornoDTO<List<CategoriaDTO>>();
+            return new RetornoDTO<List<CategoriaDTO>>(DAL.ListarCategoria(nomeCategoria.Valor));
         }
         public async Task<RetornoDTO<List<CriterioDTO>>> ListarCriterios(ValorDTO nomeCriterio = null)
         {
-            return new RetornoDTO<List<CriterioDTO>>();
+            return new RetornoDTO<List<CriterioDTO>>(DAL.ListarCriterios(nomeCriterio.Valor));
         }
         public async Task<RetornoDTO<List<TrabalhoDTO>>> ListarTrabalhos(ValorDTO nomeTrabalho = null)
         {
-            return new RetornoDTO<List<TrabalhoDTO>>();
+            return new RetornoDTO<List<TrabalhoDTO>>(DAL.ListarTrabalho(nomeTrabalho.Valor));
         }
     }
 }
