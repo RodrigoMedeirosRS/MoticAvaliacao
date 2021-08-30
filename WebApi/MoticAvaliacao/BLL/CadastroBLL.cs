@@ -32,7 +32,7 @@ namespace BLL
         public async Task<RetornoDTO<bool>> CadastrarTrabalho(TrabalhoDTO trabalhoDTO)
         {
             DAL.CadastrarTrabalho(trabalhoDTO);
-            return new RetornoDTO<bool>();
+            return new RetornoDTO<bool>(true);
         }
         
         public async Task<RetornoDTO<List<AvaliadorDTO>>> ListarAvaliadores(ValorDTO cpf = null)

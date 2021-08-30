@@ -131,13 +131,44 @@ namespace DAL
 #endregion
 
 #region Trabalho
-        public void CadastrarTrabalho(TrabalhoDTO criterioDTO)
+        public void CadastrarTrabalho(TrabalhoDTO trabalhoDTO)
         {
-
+            var trabalho = BuscarTrabalho(trabalhoDTO);
+            var categoria = BuscarCategoria(trabalhoDTO.Categoria);
+            var novoTrabalho = ConversorUtil.Mapear(trabalhoDTO, categoria.Codigo);
+            
+            if (trabalho != null)
+            {
+                novoTrabalho.Codigo = trabalho.Codigo;
+                AtualizarTrabalho(novoTrabalho);
+            }
+            else
+                InserirTrabalho(novoTrabalho);
         }
-        public List<TrabalhoDTO> ListarTrabalho(string nomeCriterio = "")
+        public List<TrabalhoDTO> ListarTrabalho(string nomeTrabalho = "")
         {
-            return new List<TrabalhoDTO>();
+            return (from trabalho in DataContext.Trabalhos
+                join
+                    categoria in DataContext.Categoria
+                    on trabalho.Categoria equals categoria.Codigo
+                where string.IsNullOrEmpty(nomeTrabalho) ? true : trabalho.Nome == nomeTrabalho
+                select ConversorUtil.Mapear(trabalho, categoria)).AsNoTracking().ToList();
+        }
+        private void AtualizarTrabalho(Trabalho trabalho)
+        {
+            DataContext.Trabalhos.Update(trabalho);
+            DataContext.SaveChanges();
+        }
+        private void InserirTrabalho(Trabalho trabalho)
+        {
+            DataContext.Trabalhos.Add(trabalho);
+            DataContext.SaveChanges();
+        }
+        private Trabalho BuscarTrabalho(TrabalhoDTO trabalhoDTO)
+        {
+            return (from trabalho in DataContext.Trabalhos
+                where trabalho.Nome == trabalhoDTO.Nome
+                select trabalho).AsNoTracking().FirstOrDefault();
         }
 #endregion
     }

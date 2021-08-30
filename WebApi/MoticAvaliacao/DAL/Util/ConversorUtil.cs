@@ -65,5 +65,25 @@ namespace DAL.Utils
                 Ativo = categoria.Ativo,
             };
         }
+        public static TrabalhoDTO Mapear(Trabalho trabalho, Categorium categoria)
+        {
+            return new TrabalhoDTO()
+            {
+                Nome = trabalho.Nome,
+                Escola = trabalho.Escola,
+                AnoApresentacao = trabalho.Anoapresentacao,
+                Categoria = Mapear(categoria)
+            };
+        }
+        public static Trabalho Mapear(TrabalhoDTO trabalhoDTO, int codCategoria)
+        {
+            return new Trabalho()
+            {
+                Nome = trabalhoDTO.Nome,
+                Escola = trabalhoDTO.Escola,
+                Anoapresentacao = trabalhoDTO.AnoApresentacao,
+                Categoria = codCategoria
+            };
+        }
     }
 }
