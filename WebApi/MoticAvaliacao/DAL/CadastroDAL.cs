@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,48 @@ namespace DAL
         {
             DataContext = dataContext;
         }
+        
+#region Administrador
+    public void AlterarAcessoDeAdministrador(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO)
+    {
+        var acesso = BuscarAcessoAdministrador(alterarAcessoAdministradorDTO);
+        if(acesso == null)
+            ConcederAcessoAdministrador(alterarAcessoAdministradorDTO.Avaliador);
+        else
+            RemoverAcessoAdministrador(acesso);
+    }
+
+    private void RemoverAcessoAdministrador(Administrador administrador)
+    {
+        DataContext.Administradors.Remove(administrador);
+        DataContext.SaveChanges();
+    }
+
+    private void ConcederAcessoAdministrador(AvaliadorDTO avaliador)
+    {
+        var codigoAvaliador = (from avaliadorCadastrado in DataContext.Avaliadors
+            where avaliadorCadastrado.Cpf == avaliador.CPF
+            select avaliadorCadastrado).AsNoTracking().FirstOrDefault().Codigo;
+        DataContext.Administradors.Add(new Administrador()
+        {
+            Avaliador = codigoAvaliador
+        });
+        DataContext.SaveChanges();
+    }
+
+    private Administrador BuscarAcessoAdministrador(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO)
+    {
+        return (from avaliador in DataContext.Avaliadors
+            join
+                administrador in DataContext.Administradors
+                on avaliador.Codigo equals administrador.Avaliador
+            where avaliador.Cpf == alterarAcessoAdministradorDTO.Avaliador.CPF
+            select administrador).AsNoTracking().FirstOrDefault();
+    }
+
+
+#endregion
+
 #region Avaliador
         public void CadastrarAvaliador(AvaliadorDTO avaliadorDTO)
         {

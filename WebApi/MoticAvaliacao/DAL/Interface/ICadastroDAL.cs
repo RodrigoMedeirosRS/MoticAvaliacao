@@ -6,6 +6,7 @@ namespace DAL.Interface
 {
     public interface ICadastroDAL
     {
+        void AlterarAcessoDeAdministrador(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO);
         void CadastrarAvaliador(AvaliadorDTO criterioDTO);
         List<AvaliadorDTO> ListarAvaliador(string nomeCriterio = "");
         void CadastrarCategoria(CategoriaDTO criterioDTO);

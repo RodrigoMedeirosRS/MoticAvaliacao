@@ -19,7 +19,13 @@ namespace API.Controllers
             BLL = bll;
             Requisicao = requisicao;
         }
-        
+
+        [HttpPost("AlterarAcessoAdministrador")]
+        public async Task<RetornoDTO<bool>> AlterarAcessoAdministrador(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO)
+        {
+            return Requisicao.ExecutarRequisicao<AlterarAcessoAdministradorDTO, bool>(alterarAcessoAdministradorDTO, BLL.AlterarAcessoDeAdministrador).Result;
+        }
+
         [HttpPost("CadastrarAvaliador")]
         public async Task<RetornoDTO<bool>> CadastrarAvaliador(AvaliadorDTO avaliadorDTO)
         {

@@ -2,17 +2,24 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using DTO;
+using BLL.Utils;
 using BLL.Interface;
 using DAL.Interface;
 
 namespace BLL
 {
-    public class CadastroBLL : ICadastroBLL
+    public class CadastroBLL : ChaveDeAcessoUtil, ICadastroBLL
     {
         private ICadastroDAL DAL { get; set; }
         public CadastroBLL(ICadastroDAL dal)
         {
             DAL = dal;
+        }
+        public async Task<RetornoDTO<bool>> AlterarAcessoDeAdministrador(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO)
+        {
+            ValidarChaveDeAcesso(alterarAcessoAdministradorDTO.ChaveDeAcesso);
+            DAL.AlterarAcessoDeAdministrador(alterarAcessoAdministradorDTO);
+            return new RetornoDTO<bool>(true);
         }
         public async Task<RetornoDTO<bool>> CadastrarAvaliador(AvaliadorDTO avaliadorDTO)
         {
