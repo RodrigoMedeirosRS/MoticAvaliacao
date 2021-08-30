@@ -99,5 +99,13 @@ namespace DAL.Utils
                 Categoria = codigo.CodigoCategoria
             };
         }
+        public static Avaliacao Mapear(CodigoAvaliadorTrabalhoCriterioDTO codigo)
+        {
+            return new Avaliacao()
+            {
+                Avaliador = codigo.CodigoAvaliador,
+                Trabalho = codigo.CodigoTrabalho
+            };
+        }
     }
 }

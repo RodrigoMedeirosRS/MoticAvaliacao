@@ -16,6 +16,7 @@ namespace BLL
         }
         public async Task<RetornoDTO<bool>> CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO)
         {
+            DAL.CadastrarAvalicao(avaliacaoDTO);
             return new RetornoDTO<bool>();
         }
         public async Task<RetornoDTO<List<AvaliacaoDTO>>> ListarAvaliacoes()
