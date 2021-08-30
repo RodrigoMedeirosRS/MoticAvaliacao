@@ -13,6 +13,8 @@ namespace DAL.Interface
         List<CategoriaDTO> ListarCategoria(string nomeCriterio = "");
         void CadastrarCriterio(CriterioDTO criterioDTO);
         List<CriterioDTO> ListarCriterios(string nomeCriterio = "");
+        void CadastrarEscola(EscolaDTO escolaDTO);
+        List<EscolaDTO> ListarEscola(string nomeEscola = "");
         void CadastrarTrabalho(TrabalhoDTO criterioDTO);
         List<TrabalhoDTO> ListarTrabalho(string nomeCriterio = "");
     }

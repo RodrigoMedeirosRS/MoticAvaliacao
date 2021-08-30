@@ -173,6 +173,44 @@ namespace DAL
         }
 #endregion
 
+#region Escola
+        public void CadastrarEscola(EscolaDTO escolaDTO)
+        {
+            var escola = BuscarEscola(escolaDTO);
+            var novaEscola = ConversorUtil.Mapear(escolaDTO);
+            
+            if (escola != null)
+            {
+                novaEscola.Codigo = escola.Codigo;
+                AtualizarEscola(novaEscola);
+            }
+            else
+                InserirEscola(novaEscola);
+        }
+        public List<EscolaDTO> ListarEscola(string nomeEscola = "")
+        {
+            return (from escola in DataContext.Escolas
+                where string.IsNullOrEmpty(nomeEscola) ? true : escola.Nome == nomeEscola
+                select ConversorUtil.Mapear(escola)).AsNoTracking().ToList();
+        }
+        private void AtualizarEscola(Escola escola)
+        {
+            DataContext.Escolas.Update(escola);
+            DataContext.SaveChanges();
+        }
+        private void InserirEscola(Escola escola)
+        {
+            DataContext.Escolas.Add(escola);
+            DataContext.SaveChanges();
+        }
+        private Escola BuscarEscola(EscolaDTO escolaDTO)
+        {
+            return (from escola in DataContext.Escolas
+                where escola.Nome == escolaDTO.Nome
+                select escola).AsNoTracking().FirstOrDefault();
+        }
+#endregion
+
 #region Trabalho
         public void CadastrarTrabalho(TrabalhoDTO trabalhoDTO)
         {
@@ -204,7 +242,7 @@ namespace DAL
         {
             var codigoCategoria = BuscarCategoria(trabalho.Categoria).Codigo;
             var codigoEscola = (from escola in DataContext.Escolas
-                where trabalho.Escola == escola.Nome
+                where trabalho.Escola.Nome == escola.Nome
                 select escola).AsNoTracking().FirstOrDefault().Codigo;
 
             return new CodigoEscolaCategoriaDTO()

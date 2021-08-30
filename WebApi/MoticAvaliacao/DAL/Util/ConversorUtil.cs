@@ -65,12 +65,26 @@ namespace DAL.Utils
                 Ativo = categoria.Ativo,
             };
         }
+        public static EscolaDTO Mapear(Escola escola)
+        {
+            return new EscolaDTO()
+            {
+                Nome = escola.Nome
+            };
+        }
+        public static Escola Mapear(EscolaDTO escola)
+        {
+            return new Escola()
+            {
+                Nome = escola.Nome
+            };
+        }
         public static TrabalhoDTO Mapear(Trabalho trabalho, Categorium categoria, Escola escola)
         {
             return new TrabalhoDTO()
             {
                 Nome = trabalho.Nome,
-                Escola = escola.Nome,
+                Escola = Mapear(escola),
                 AnoApresentacao = trabalho.Anoapresentacao,
                 Categoria = Mapear(categoria)
             };

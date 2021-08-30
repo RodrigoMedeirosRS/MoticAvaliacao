@@ -36,6 +36,11 @@ namespace BLL
             DAL.CadastrarCriterio(criterioDTO);
             return new RetornoDTO<bool>(true);
         }
+        public async Task<RetornoDTO<bool>> CadastrarEscola(EscolaDTO escolaDTO)
+        {
+            DAL.CadastrarEscola(escolaDTO);
+            return new RetornoDTO<bool>(true);
+        }
         public async Task<RetornoDTO<bool>> CadastrarTrabalho(TrabalhoDTO trabalhoDTO)
         {
             DAL.CadastrarTrabalho(trabalhoDTO);
@@ -53,6 +58,10 @@ namespace BLL
         public async Task<RetornoDTO<List<CriterioDTO>>> ListarCriterios(ValorDTO nomeCriterio = null)
         {
             return new RetornoDTO<List<CriterioDTO>>(DAL.ListarCriterios(nomeCriterio.Valor));
+        }
+        public async Task<RetornoDTO<List<EscolaDTO>>> ListarEscola(ValorDTO nomeEscola = null)
+        {
+            return new RetornoDTO<List<EscolaDTO>>(DAL.ListarEscola(nomeEscola.Valor));
         }
         public async Task<RetornoDTO<List<TrabalhoDTO>>> ListarTrabalhos(ValorDTO nomeTrabalho = null)
         {

@@ -44,6 +44,12 @@ namespace API.Controllers
             return Requisicao.ExecutarRequisicao<CriterioDTO, bool>(criterioDTO, BLL.CadastrarCriterio).Result;
         }
 
+        [HttpPost("CadastrarEscola")]
+        public async Task<RetornoDTO<bool>> CadastrarEscola(EscolaDTO escolaDTO)
+        {
+            return Requisicao.ExecutarRequisicao<EscolaDTO, bool>(escolaDTO, BLL.CadastrarEscola).Result;
+        }
+
         [HttpPost("CadastrarTrabalho")]
         public async Task<RetornoDTO<bool>> CadastrarTrabalho(TrabalhoDTO trabalhoDTO)
         {
@@ -68,6 +74,12 @@ namespace API.Controllers
             return Requisicao.ExecutarRequisicao<ValorDTO, List<CriterioDTO>>(nomeCriterio, BLL.ListarCriterios).Result;
         }
         
+        [HttpPost("ListarEscolas")]
+        public async Task<RetornoDTO<List<EscolaDTO>>> ListarEscolas(ValorDTO nomeEscola = null)
+        {
+            return Requisicao.ExecutarRequisicao<ValorDTO, List<EscolaDTO>>(nomeEscola, BLL.ListarEscola).Result;
+        }
+
         [HttpPost("ListarTrabalhos")]
         public async Task<RetornoDTO<List<TrabalhoDTO>>> ListarTrabalhos(ValorDTO nomeTrabalho = null)
         {
