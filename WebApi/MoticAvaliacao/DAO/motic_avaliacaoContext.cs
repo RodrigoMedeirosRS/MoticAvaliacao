@@ -22,6 +22,7 @@ namespace DAO
         public virtual DbSet<Avaliador> Avaliadors { get; set; }
         public virtual DbSet<Categorium> Categoria { get; set; }
         public virtual DbSet<Criterio> Criterios { get; set; }
+        public virtual DbSet<Escola> Escolas { get; set; }
         public virtual DbSet<Nomecriterio> Nomecriterios { get; set; }
         public virtual DbSet<Trabalho> Trabalhos { get; set; }
 
@@ -45,6 +46,9 @@ namespace DAO
 
                 entity.ToTable("administrador");
 
+                entity.HasIndex(e => e.Avaliador, "administrador_avaliador_key")
+                    .IsUnique();
+
                 entity.HasIndex(e => e.Avaliador, "administrador_fkindex1");
 
                 entity.HasIndex(e => e.Avaliador, "ifk_rel_06");
@@ -54,8 +58,8 @@ namespace DAO
                 entity.Property(e => e.Avaliador).HasColumnName("avaliador");
 
                 entity.HasOne(d => d.AvaliadorNavigation)
-                    .WithMany(p => p.Administradors)
-                    .HasForeignKey(d => d.Avaliador)
+                    .WithOne(p => p.Administrador)
+                    .HasForeignKey<Administrador>(d => d.Avaliador)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("administrador_avaliador_fkey");
             });
@@ -102,6 +106,12 @@ namespace DAO
                 entity.ToTable("avaliador");
 
                 entity.HasIndex(e => e.Cpf, "avaliador_cpf_key")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Email, "avaliador_email_key")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Telefone, "avaliador_telefone_key")
                     .IsUnique();
 
                 entity.Property(e => e.Codigo).HasColumnName("codigo");
@@ -151,7 +161,7 @@ namespace DAO
 
                 entity.Property(e => e.Nome)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .HasColumnName("nome");
             });
 
@@ -199,6 +209,24 @@ namespace DAO
                     .HasConstraintName("criterio_nomecriterio_fkey");
             });
 
+            modelBuilder.Entity<Escola>(entity =>
+            {
+                entity.HasKey(e => e.Codigo)
+                    .HasName("escola_pkey");
+
+                entity.ToTable("escola");
+
+                entity.HasIndex(e => e.Nome, "escola_nome_key")
+                    .IsUnique();
+
+                entity.Property(e => e.Codigo).HasColumnName("codigo");
+
+                entity.Property(e => e.Nome)
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnName("nome");
+            });
+
             modelBuilder.Entity<Nomecriterio>(entity =>
             {
                 entity.HasKey(e => e.Codigo)
@@ -207,6 +235,9 @@ namespace DAO
                 entity.ToTable("nomecriterio");
 
                 entity.HasIndex(e => e.Nome, "nomecriterio_nome_key")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Peso, "nomecriterio_peso_key")
                     .IsUnique();
 
                 entity.Property(e => e.Codigo).HasColumnName("codigo");
@@ -230,7 +261,11 @@ namespace DAO
 
                 entity.HasIndex(e => e.Categoria, "ifk_rel_03");
 
+                entity.HasIndex(e => e.Escola, "ifk_rel_07");
+
                 entity.HasIndex(e => e.Categoria, "trabalho_fkindex1");
+
+                entity.HasIndex(e => e.Escola, "trabalho_fkindex2");
 
                 entity.HasIndex(e => e.Nome, "trabalho_nome_key")
                     .IsUnique();
@@ -241,10 +276,7 @@ namespace DAO
 
                 entity.Property(e => e.Categoria).HasColumnName("categoria");
 
-                entity.Property(e => e.Escola)
-                    .IsRequired()
-                    .HasMaxLength(200)
-                    .HasColumnName("escola");
+                entity.Property(e => e.Escola).HasColumnName("escola");
 
                 entity.Property(e => e.Nome)
                     .IsRequired()
@@ -256,6 +288,12 @@ namespace DAO
                     .HasForeignKey(d => d.Categoria)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("trabalho_categoria_fkey");
+
+                entity.HasOne(d => d.EscolaNavigation)
+                    .WithMany(p => p.Trabalhos)
+                    .HasForeignKey(d => d.Escola)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("trabalho_escola_fkey");
             });
 
             OnModelCreatingPartial(modelBuilder);

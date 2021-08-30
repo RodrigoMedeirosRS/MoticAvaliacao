@@ -10,6 +10,6 @@ DROP TABLE avaliador;
 
 DROP TABLE nomecriterio;
 
+DROP TABLE escola;
+
 DROP TABLE categoria;
-
-

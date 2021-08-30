@@ -177,8 +177,8 @@ namespace DAL
         public void CadastrarTrabalho(TrabalhoDTO trabalhoDTO)
         {
             var trabalho = BuscarTrabalho(trabalhoDTO);
-            var categoria = BuscarCategoria(trabalhoDTO.Categoria);
-            var novoTrabalho = ConversorUtil.Mapear(trabalhoDTO, categoria.Codigo);
+            var codigos = BuscarCodigoCategoriaEscola(trabalhoDTO);
+            var novoTrabalho = ConversorUtil.Mapear(trabalhoDTO, codigos);
             
             if (trabalho != null)
             {
@@ -194,8 +194,24 @@ namespace DAL
                 join
                     categoria in DataContext.Categoria
                     on trabalho.Categoria equals categoria.Codigo
+                join
+                    escola in DataContext.Escolas
+                    on trabalho.Escola equals escola.Codigo
                 where string.IsNullOrEmpty(nomeTrabalho) ? true : trabalho.Nome == nomeTrabalho
-                select ConversorUtil.Mapear(trabalho, categoria)).AsNoTracking().ToList();
+                select ConversorUtil.Mapear(trabalho, categoria, escola)).AsNoTracking().ToList();
+        }
+        private CodigoEscolaCategoriaDTO BuscarCodigoCategoriaEscola(TrabalhoDTO trabalho)
+        {
+            var codigoCategoria = BuscarCategoria(trabalho.Categoria).Codigo;
+            var codigoEscola = (from escola in DataContext.Escolas
+                where trabalho.Escola == escola.Nome
+                select escola).AsNoTracking().FirstOrDefault().Codigo;
+
+            return new CodigoEscolaCategoriaDTO()
+            {
+                CodigoCategoria = codigoCategoria,
+                CodigosEscola = codigoEscola
+            };
         }
         private void AtualizarTrabalho(Trabalho trabalho)
         {
