@@ -6,7 +6,7 @@ namespace BLL.Interface
 {
     public interface ILoginBLL
     {
-        Task<RetornoDTO<bool>> LoginAdministrador(LoginDTO loginDTO);
-        Task<RetornoDTO<bool>> LoginAvaliador(LoginDTO loginDTO);
+        Task<RetornoDTO<AvaliadorDTO>> LoginAdministrador(LoginDTO loginDTO);
+        Task<RetornoDTO<AvaliadorDTO>> LoginAvaliador(LoginDTO loginDTO);
     }
 }

@@ -20,14 +20,14 @@ namespace API.Controllers
         }
 
         [HttpPost("LoginAdministrador")]
-        public async Task<RetornoDTO<bool>> LoginAdministrador(LoginDTO loginDTO)
+        public async Task<RetornoDTO<AvaliadorDTO>> LoginAdministrador(LoginDTO loginDTO)
         {
-            return Requisicao.ExecutarRequisicao<LoginDTO, bool>(loginDTO, BLL.LoginAdministrador).Result;
+            return Requisicao.ExecutarRequisicao<LoginDTO, AvaliadorDTO>(loginDTO, BLL.LoginAdministrador).Result;
         }
         [HttpPost("LoginAvaliador")]
-        public async Task<RetornoDTO<bool>> LoginAvaliador(LoginDTO loginDTO)
+        public async Task<RetornoDTO<AvaliadorDTO>> LoginAvaliador(LoginDTO loginDTO)
         {
-            return Requisicao.ExecutarRequisicao<LoginDTO, bool>(loginDTO, BLL.LoginAvaliador).Result;
+            return Requisicao.ExecutarRequisicao<LoginDTO, AvaliadorDTO>(loginDTO, BLL.LoginAvaliador).Result;
         }
     }
 }

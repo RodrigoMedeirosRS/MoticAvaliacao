@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 
 using DTO;
@@ -13,13 +14,20 @@ namespace BLL
         {
             DAL = dAL;
         }
-        public async Task<RetornoDTO<bool>> LoginAdministrador(LoginDTO loginDTO)
+        public async Task<RetornoDTO<AvaliadorDTO>> LoginAdministrador(LoginDTO loginDTO)
         {
-            return new RetornoDTO<bool>();
+            return new RetornoDTO<AvaliadorDTO>(AvaliarResultado(DAL.LoginAdministrador(loginDTO)));
         }
-        public async Task<RetornoDTO<bool>> LoginAvaliador(LoginDTO loginDTO)
+        public async Task<RetornoDTO<AvaliadorDTO>> LoginAvaliador(LoginDTO loginDTO)
         {
-            return new RetornoDTO<bool>();
+            return new RetornoDTO<AvaliadorDTO>(AvaliarResultado(DAL.LoginAvaliador(loginDTO)));
+        }
+
+        private AvaliadorDTO AvaliarResultado(AvaliadorDTO resultado)
+        {
+            if (resultado == null)
+                throw new Exception(Erros.ErroLogin);
+            return resultado;
         }
     }
 }

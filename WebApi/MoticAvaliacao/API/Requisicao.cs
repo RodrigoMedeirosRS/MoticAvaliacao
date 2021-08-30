@@ -11,44 +11,39 @@ namespace API
     {
         public Task<RetornoDTO<Saida>> ExecutarRequisicao<Entrada, Saida>(Entrada entrada, Func<Entrada, Task<RetornoDTO<Saida>>> metodo, [CallerMemberName] string nomeMetodo = "")
         {
-            try
+            return Task<RetornoDTO<Saida>>.Run(async () =>
             {
-                return Task<RetornoDTO<Saida>>.Run(async () => 
+                try
                 {
                     return await metodo(entrada);
-                });
-            }
-            catch(Exception erro)
-            {
-                return RetornarErro<Saida>(erro);
-            }
-        }
-
-        public Task<RetornoDTO<Saida>> ExecutarRequisicao<Saida>(Func<Task<RetornoDTO<Saida>>> metodo, [CallerMemberName] string nomeMetodo = "")
-        {
-            try
-            {
-                return Task<RetornoDTO<Saida>>.Run(async () => 
+                }
+                catch(Exception erro)
                 {
-                    return await metodo();
-                });
-            }
-            catch(Exception erro)
-            {
-                return RetornarErro<Saida>(erro);
-            }
+                    return await RetornarErro<Saida>(erro);
+                }
+            });
         }
-
-        private static Task<RetornoDTO<Saida>> RetornarErro<Saida>(Exception erro)
+        public Task<RetornoDTO<Saida>> ExecutarRequisicao<Saida>(Func<Task<RetornoDTO<Saida>>> metodo, [CallerMemberName] string nomeMetodo = "")
         {
             return Task<RetornoDTO<Saida>>.Run(async () =>
             {
-                return new RetornoDTO<Saida>()
+               try
                 {
-                    Mensagem = erro.Message,
-                    Sucesso = false
-                };
+                    return await metodo();
+                }
+                catch(Exception erro)
+                {
+                    return await RetornarErro<Saida>(erro);
+                }
             });
+        }
+        private static async Task<RetornoDTO<Saida>> RetornarErro<Saida>(Exception erro)
+        {
+            Console.WriteLine(erro);
+            return new RetornoDTO<Saida>()
+            {
+                Mensagem = erro.Message
+            };
         }
     }
 }

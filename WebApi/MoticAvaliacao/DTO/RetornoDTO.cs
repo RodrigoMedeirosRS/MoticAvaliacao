@@ -5,10 +5,13 @@ namespace DTO
         public RetornoDTO()
         {
             Mensagem = "Sucesso";
-            Sucesso = true;
+        }
+        public RetornoDTO(ContentType conteudo)
+        {
+            Mensagem = "Sucesso";
+            Conteudo = conteudo;
         }
         public string Mensagem { get; set; }
-        public bool Sucesso { get; set; }
         public ContentType Conteudo { get; set; }
     }
 }
