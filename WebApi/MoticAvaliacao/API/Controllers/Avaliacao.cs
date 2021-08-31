@@ -20,10 +20,16 @@ namespace API.Controllers
             Requisicao = requisicao;
         }
 
-        [HttpPost("CadastrarAvalicao")]
-        public async Task<RetornoDTO<bool>> CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO)
+        [HttpPost("CadastrarAvaliacao")]
+        public async Task<RetornoDTO<bool>> CadastrarAvaliacao(AvaliacaoDTO avaliacaoDTO)
         {
-            return Requisicao.ExecutarRequisicao<AvaliacaoDTO, bool>(avaliacaoDTO, BLL.CadastrarAvalicao).Result;
+            return Requisicao.ExecutarRequisicao<AvaliacaoDTO, bool>(avaliacaoDTO, BLL.CadastrarAvaliacao).Result;
+        }
+
+        [HttpPost("RemoverAvaliacao")]
+        public async Task<RetornoDTO<bool>> RemoverAvaliacao(AvaliacaoDTO avaliacaoDTO)
+        {
+            return Requisicao.ExecutarRequisicao<AvaliacaoDTO, bool>(avaliacaoDTO, BLL.RemoverAvaliacao).Result;
         }
 
         [HttpPost("ListarAvaliacoes")]

@@ -14,14 +14,23 @@ namespace BLL
         {
             DAL = dal;
         }
-        public async Task<RetornoDTO<bool>> CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO)
+        public async Task<RetornoDTO<bool>> CadastrarAvaliacao(AvaliacaoDTO avaliacaoDTO)
         {
-            DAL.CadastrarAvalicao(avaliacaoDTO);
-            return new RetornoDTO<bool>();
+            DAL.CadastrarAvaliacao(avaliacaoDTO);
+            return new RetornoDTO<bool>(true);
+        }
+        public async Task<RetornoDTO<bool>> RemoverAvaliacao(AvaliacaoDTO avaliacaoDTO)
+        {
+            DAL.RemoverAvaliacao(avaliacaoDTO);
+            return new RetornoDTO<bool>(true);
         }
         public async Task<RetornoDTO<List<AvaliacaoDTO>>> ListarAvaliacoes()
         {
-            return new RetornoDTO<List<AvaliacaoDTO>>();
+            var avalicoes = DAL.ListarAvalicoes();
+            return new RetornoDTO<List<AvaliacaoDTO>>()
+            {
+                Conteudo = avalicoes
+            };
         }
     }
 }

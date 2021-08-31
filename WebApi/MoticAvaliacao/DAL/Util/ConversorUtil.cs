@@ -13,7 +13,7 @@ namespace DAL.Utils
             {
                 Nome = avaliador.Nome,
                 Sobrenome = avaliador.Sobrenome,
-                CPF = "",
+                CPF = avaliador.Cpf,
                 Senha = "",
                 Email = avaliador.Email,
                 Telefone = avaliador.Telefone

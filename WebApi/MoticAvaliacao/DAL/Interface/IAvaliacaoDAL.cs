@@ -1,9 +1,13 @@
+using System.Collections.Generic;
+
 using DTO;
 
 namespace DAL.Interface
 {
     public interface IAvaliacaoDAL
     {
-        void CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO);
+        void CadastrarAvaliacao(AvaliacaoDTO avaliacaoDTO);
+        List<AvaliacaoDTO> ListarAvalicoes();
+        void RemoverAvaliacao(AvaliacaoDTO avaliacaoDTO);
     }
 }

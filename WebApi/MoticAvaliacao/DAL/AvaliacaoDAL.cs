@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 using DAO;
@@ -17,7 +18,7 @@ namespace DAL
             DataContext = dataContext;
             DAL = dal;
         }
-        public void CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO)
+        public void CadastrarAvaliacao(AvaliacaoDTO avaliacaoDTO)
         {
             var avaliacao = BuscarAvaliacao(avaliacaoDTO);
             var codigos = BuscarCodigos(avaliacaoDTO);
@@ -31,7 +32,37 @@ namespace DAL
             else
                 InserirAvaliacao(novaAvalicao);
         }
-
+        public void RemoverAvaliacao(AvaliacaoDTO avaliacaoDTO)
+        {
+            var avaliacao = BuscarAvaliacao(avaliacaoDTO);
+            DataContext.Avaliacaos.Remove(avaliacao);
+            DataContext.SaveChanges();
+        }
+        public List<AvaliacaoDTO> ListarAvalicoes()
+        {
+            return (from avaliacao in DataContext.Avaliacaos
+                join
+                    avaliador in DataContext.Avaliadors
+                    on avaliacao.Avaliador equals avaliador.Codigo
+                join
+                    trabalho in DataContext.Trabalhos
+                    on avaliacao.Trabalho equals trabalho.Codigo
+                join
+                    categoria in DataContext.Categoria
+                    on trabalho.Categoria equals categoria.Codigo
+                join
+                    escola in DataContext.Escolas
+                    on trabalho.Escola equals escola.Codigo
+                join
+                    criterio in DataContext.Criterios
+                    on avaliacao.Codigo equals criterio.Codigo into criterioLeftJoin from criterioLeft in criterioLeftJoin.DefaultIfEmpty()
+                select new AvaliacaoDTO()
+                {
+                    Avaliador = ConversorUtil.Mapear(avaliador),
+                    Trabalho = ConversorUtil.Mapear(trabalho, categoria, escola),
+                    //CritariosAvaliados = criterioLeftJoin
+                }).AsNoTracking().ToList();
+        }
         private void AtualizarAvaliacao(Avaliacao avaliacao)
         {
             DataContext.Avaliacaos.Update(avaliacao);

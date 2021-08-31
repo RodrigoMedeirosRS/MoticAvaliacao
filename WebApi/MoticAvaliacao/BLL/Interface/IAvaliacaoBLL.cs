@@ -7,7 +7,8 @@ namespace BLL.Interface
 {
     public interface IAvaliacaoBLL
     {
-        Task<RetornoDTO<bool>> CadastrarAvalicao(AvaliacaoDTO avaliacaoDTO);
+        Task<RetornoDTO<bool>> CadastrarAvaliacao(AvaliacaoDTO avaliacaoDTO);
+        Task<RetornoDTO<bool>> RemoverAvaliacao(AvaliacaoDTO avaliacaoDTO);
         Task<RetornoDTO<List<AvaliacaoDTO>>> ListarAvaliacoes();
     }
 }
