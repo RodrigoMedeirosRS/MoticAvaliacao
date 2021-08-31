@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 using DAO;
 using DTO;
@@ -105,6 +106,16 @@ namespace DAL.Utils
             {
                 Avaliador = codigo.CodigoAvaliador,
                 Trabalho = codigo.CodigoTrabalho
+            };
+        }
+        public static CriterioAvaliadoDTO Mapear(Criterio criterioAvaliado, Nomecriterio nomeCriterio)
+        {
+            return new CriterioAvaliadoDTO()
+            {
+                NomeCriterio = Mapear(nomeCriterio),
+                Descricao = criterioAvaliado.Descricao,
+                Observacao = criterioAvaliado.Observacao,
+                Nota = criterioAvaliado.Nota
             };
         }
     }

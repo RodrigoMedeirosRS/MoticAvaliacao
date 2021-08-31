@@ -4,8 +4,9 @@ namespace DTO
 {
     public class AvaliacaoDTO
     {
+        public int Codigo { get; set ;}
         public AvaliadorDTO Avaliador { get; set; }
         public TrabalhoDTO Trabalho { get; set; }
-        public List<CriterioDTO> CritariosAvaliados { get; set; }
+        public List<CriterioAvaliadoDTO> CritariosAvaliados { get; set; }
     }
 }

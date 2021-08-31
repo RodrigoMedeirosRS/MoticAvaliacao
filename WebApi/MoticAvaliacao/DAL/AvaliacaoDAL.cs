@@ -40,28 +40,44 @@ namespace DAL
         }
         public List<AvaliacaoDTO> ListarAvalicoes()
         {
+            var avaliacoes = ObterAvaliacoes();
+            foreach (var avaliacao in avaliacoes)
+                avaliacao.CritariosAvaliados = BuscarCriteriosAvaliados(avaliacao.Codigo) ?? new List<CriterioAvaliadoDTO>();
+            return avaliacoes;
+        }
+
+        private List<AvaliacaoDTO> ObterAvaliacoes()
+        {
             return (from avaliacao in DataContext.Avaliacaos
+                    join
+                        avaliador in DataContext.Avaliadors
+                        on avaliacao.Avaliador equals avaliador.Codigo
+                    join
+                        trabalho in DataContext.Trabalhos
+                        on avaliacao.Trabalho equals trabalho.Codigo
+                    join
+                        categoria in DataContext.Categoria
+                        on trabalho.Categoria equals categoria.Codigo
+                    join
+                        escola in DataContext.Escolas
+                        on trabalho.Escola equals escola.Codigo
+
+                    select new AvaliacaoDTO()
+                    {
+                        Codigo = avaliacao.Codigo,
+                        Avaliador = ConversorUtil.Mapear(avaliador),
+                        Trabalho = ConversorUtil.Mapear(trabalho, categoria, escola)
+                    }).AsNoTracking().ToList();
+        }
+
+        private List<CriterioAvaliadoDTO> BuscarCriteriosAvaliados(int codigoAvaliacao)
+        {
+            return (from criteriosAvaliados in DataContext.Criterios
                 join
-                    avaliador in DataContext.Avaliadors
-                    on avaliacao.Avaliador equals avaliador.Codigo
-                join
-                    trabalho in DataContext.Trabalhos
-                    on avaliacao.Trabalho equals trabalho.Codigo
-                join
-                    categoria in DataContext.Categoria
-                    on trabalho.Categoria equals categoria.Codigo
-                join
-                    escola in DataContext.Escolas
-                    on trabalho.Escola equals escola.Codigo
-                join
-                    criterio in DataContext.Criterios
-                    on avaliacao.Codigo equals criterio.Codigo into criterioLeftJoin from criterioLeft in criterioLeftJoin.DefaultIfEmpty()
-                select new AvaliacaoDTO()
-                {
-                    Avaliador = ConversorUtil.Mapear(avaliador),
-                    Trabalho = ConversorUtil.Mapear(trabalho, categoria, escola),
-                    //CritariosAvaliados = criterioLeftJoin
-                }).AsNoTracking().ToList();
+                    nomeCriterio in DataContext.Nomecriterios
+                    on criteriosAvaliados.Nomecriterio equals nomeCriterio.Codigo
+                where criteriosAvaliados.Avaliacao == codigoAvaliacao
+                select ConversorUtil.Mapear(criteriosAvaliados, nomeCriterio)).AsNoTracking().ToList();
         }
         private void AtualizarAvaliacao(Avaliacao avaliacao)
         {
