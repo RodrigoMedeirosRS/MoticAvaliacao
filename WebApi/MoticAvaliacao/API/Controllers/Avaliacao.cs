@@ -33,9 +33,9 @@ namespace API.Controllers
         }
 
         [HttpPost("ListarAvaliacoes")]
-        public async Task<RetornoDTO<List<AvaliacaoDTO>>> ListarAvaliacoes(ValorDTO qualquerCoisa = null)
+        public async Task<RetornoDTO<RetornoListagemAvaliacoesDTO>> ListarAvaliacoes(ValorDTO qualquerCoisa = null)
         {
-            return Requisicao.ExecutarRequisicao<List<AvaliacaoDTO>>(BLL.ListarAvaliacoes).Result;
+            return Requisicao.ExecutarRequisicao<RetornoListagemAvaliacoesDTO>(BLL.ListarAvaliacoes).Result;
         }
     }
 }

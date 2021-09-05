@@ -9,6 +9,6 @@ namespace BLL.Interface
     {
         Task<RetornoDTO<bool>> CadastrarAvaliacao(AvaliacaoDTO avaliacaoDTO);
         Task<RetornoDTO<bool>> RemoverAvaliacao(AvaliacaoDTO avaliacaoDTO);
-        Task<RetornoDTO<List<AvaliacaoDTO>>> ListarAvaliacoes();
+        Task<RetornoDTO<RetornoListagemAvaliacoesDTO>> ListarAvaliacoes();
     }
 }
