@@ -2,7 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj" />
-    <ProjectReference Include="..\RestSharp\src\RestSharp\RestSharp.csproj"/>
+    <ProjectReference Include="..\RestSharp\src\RestSharp\RestSharp.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <PropertyGroup>
