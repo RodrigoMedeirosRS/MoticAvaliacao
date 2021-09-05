@@ -11,7 +11,15 @@ config_version=4
 [application]
 
 config/name="Gerenciador.Motic"
+run/main_scene="res://RES/Cenas/MainController.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1366
+window/size/height=768
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
 
 [physics]
 

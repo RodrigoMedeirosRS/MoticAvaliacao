@@ -1,0 +1,236 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://RES/Sprites/Logo.png" type="Texture" id=1]
+[ext_resource path="res://RES/Fontes/Karla-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://RES/Sprites/ButtonClick.png" type="Texture" id=4]
+[ext_resource path="res://RES/Sprites/ButtonOver.png" type="Texture" id=5]
+[ext_resource path="res://RES/Fontes/Karla-Italic.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://RES/Sprites/Button.png" type="Texture" id=7]
+[ext_resource path="res://CTRL/LoginCTRL.cs" type="Script" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=10]
+resource_name = "Error"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Modal:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 520, 160 ), Vector2( 530, 160 ), Vector2( 510, 160 ), Vector2( 520, 160 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Modal:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 520, 1000 ), Vector2( 520, 160 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Modal:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 520, 160 ), Vector2( 520, 1000 ) ]
+}
+
+[node name="Login" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1366.0
+margin_bottom = -768.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Modal" type="Control" parent="."]
+margin_left = 500.0
+margin_top = 120.0
+margin_right = 500.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Visual" type="Control" parent="Modal"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Modal/Visual"]
+margin_right = 358.0
+margin_bottom = 461.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Modal/Visual"]
+margin_left = 5.0
+margin_right = 361.0
+margin_bottom = 175.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPF" type="LineEdit" parent="Modal"]
+margin_left = 24.0
+margin_top = 208.0
+margin_right = 327.0
+margin_bottom = 243.0
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+placeholder_text = "CPF"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Modal/CPF"]
+margin_top = 36.0
+margin_right = 303.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[node name="Descricao" type="Label" parent="Modal/CPF"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Login:"
+
+[node name="SENHA" type="LineEdit" parent="Modal"]
+margin_left = 24.7818
+margin_top = 289.764
+margin_right = 327.782
+margin_bottom = 324.764
+custom_styles/focus = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+secret = true
+placeholder_text = "SENHA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Modal/SENHA"]
+margin_top = 36.0
+margin_right = 303.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Descricao" type="Label" parent="Modal/SENHA"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Senha:"
+
+[node name="TextureButton" type="TextureButton" parent="Modal"]
+margin_left = 68.6219
+margin_top = 352.27
+margin_right = 291.622
+margin_bottom = 394.27
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Modal/TextureButton"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 210.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 8 )
+text = "Entrar"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+uppercase = true
+
+[node name="Erro" type="Label" parent="Modal"]
+margin_left = 30.0
+margin_top = 409.0
+margin_right = 335.0
+margin_bottom = 448.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+anims/Error = SubResource( 10 )
+anims/FadeIn = SubResource( 11 )
+anims/FadeOut = SubResource( 12 )
+
+[connection signal="button_up" from="Modal/TextureButton" to="." method="_on_TextureButton_button_up"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
