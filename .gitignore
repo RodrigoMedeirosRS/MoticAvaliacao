@@ -1,0 +1,12 @@
+WebApi/MoticAvaliacao/API/bin
+WebApi/MoticAvaliacao/API/obj
+WebApi/MoticAvaliacao/BLL/bin
+WebApi/MoticAvaliacao/BLL/obj
+WebApi/MoticAvaliacao/DAL/bin
+WebApi/MoticAvaliacao/DAL/obj
+WebApi/MoticAvaliacao/DAO/bin
+WebApi/MoticAvaliacao/DAO/obj
+WebApi/MoticAvaliacao/DTO/bin
+WebApi/MoticAvaliacao/DTO/obj
+Aplicativos/Gerenciador/.mono/temp
+Aplicativos/Avaliador/.mono/temp

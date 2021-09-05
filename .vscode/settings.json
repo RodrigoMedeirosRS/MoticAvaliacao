@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    "WebApi/MoticAvaliacao/API/obj": true,
+    "WebApi/MoticAvaliacao/API/bin": true,
+    "WebApi/MoticAvaliacao/BLL/obj": true,
+    "WebApi/MoticAvaliacao/BLL/bin": true,
+    "WebApi/MoticAvaliacao/DAL/bin": true,
+    "WebApi/MoticAvaliacao/DAL/obj": true,
+    "WebApi/MoticAvaliacao/DAO/bin": true,
+    "WebApi/MoticAvaliacao/DAO/obj": true,
+    "WebApi/MoticAvaliacao/DTO/bin": true,
+    "WebApi/MoticAvaliacao/DTO/obj": true,
+    "WebApi/MoticAvaliacao/.vscode": true,
+    "WebApi/.gitignore": true,
+    "Aplicativos/Gerenciador/.mono/temp": true,
+    "Aplicativos/Avaliador/.mono/temp": true
+  }
+}
