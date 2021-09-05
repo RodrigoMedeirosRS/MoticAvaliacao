@@ -13,6 +13,9 @@
     "WebApi/MoticAvaliacao/.vscode": true,
     "WebApi/.gitignore": true,
     "Aplicativos/Gerenciador/.mono/temp": true,
-    "Aplicativos/Avaliador/.mono/temp": true
+    "Aplicativos/Avaliador/.mono/temp": true,
+    ".vscode": true,
+    ".gitignore": true,
+    "WebApi/.vscode": true
   }
 }
