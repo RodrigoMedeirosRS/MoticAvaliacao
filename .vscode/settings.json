@@ -16,6 +16,12 @@
     "Aplicativos/Avaliador/.mono/temp": true,
     ".vscode": true,
     ".gitignore": true,
-    "WebApi/.vscode": true
+    "WebApi/.vscode": true,
+    "Aplicativos/SAL/bin": true,
+    "Aplicativos/SAL/obj": true,
+    "Aplicativos/DTO/bin": true,
+    "Aplicativos/DTO/obj": true,
+    "Aplicativos/BLL/bin": true,
+    "Aplicativos/BLL/obj": true
   }
 }
