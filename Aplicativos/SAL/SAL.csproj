@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj" />
+    <ProjectReference Include="..\RestSharp\src\RestSharp\RestSharp.csproj"/>
   </ItemGroup>
 
   <PropertyGroup>

@@ -22,6 +22,11 @@
     "Aplicativos/DTO/bin": true,
     "Aplicativos/DTO/obj": true,
     "Aplicativos/BLL/bin": true,
-    "Aplicativos/BLL/obj": true
+    "Aplicativos/BLL/obj": true,
+    "Aplicativos/RestSharp/benchmarks/RestSharp.Benchmarks/bin": true,
+    "Aplicativos/RestSharp/benchmarks/RestSharp.Benchmarks/obj": true,
+    "Aplicativos/RestSharp/src/RestSharp/bin": true,
+    "Aplicativos/RestSharp/src/RestSharp/obj": true,
+    "Aplicativos/RestSharp": true
   }
 }
