@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://RES/Outros/ButtonDashboardGroup.tres" type="ButtonGroup" id=1]
 [ext_resource path="res://RES/Sprites/Botoes/Categoria_Hover.png" type="Texture" id=2]
@@ -9,8 +9,11 @@
 [ext_resource path="res://RES/Sprites/Botoes/Categoria_Pressed.png" type="Texture" id=7]
 [ext_resource path="res://RES/Sprites/Botoes/Criterios.png" type="Texture" id=8]
 [ext_resource path="res://CTRL/DashboardCTRL.cs" type="Script" id=9]
+[ext_resource path="res://RES/Sprites/Botoes/Escola_Pressed.png" type="Texture" id=10]
+[ext_resource path="res://RES/Sprites/Botoes/Escola_Hover.png" type="Texture" id=11]
+[ext_resource path="res://RES/Sprites/Botoes/Escola.png" type="Texture" id=12]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 10
 border_width_top = 4
@@ -22,7 +25,7 @@ corner_radius_top_right = 12
 corner_detail = 12
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 10
 border_width_top = 4
@@ -33,13 +36,13 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 12
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=5]
 size = 14
 font_data = ExtResource( 4 )
 
@@ -90,10 +93,10 @@ __meta__ = {
 margin_left = 94.0
 margin_right = 1366.0
 margin_bottom = 768.0
-custom_styles/tab_fg = SubResource( 2 )
-custom_styles/tab_bg = SubResource( 3 )
-custom_styles/panel = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/tab_fg = SubResource( 1 )
+custom_styles/tab_bg = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_fg = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,9 +128,9 @@ __meta__ = {
 }
 
 [node name="Categoria" type="TextureButton" parent="Container/ContainerBotoes"]
-margin_top = 312.0
+margin_top = 275.0
 margin_right = 96.0
-margin_bottom = 382.0
+margin_bottom = 345.0
 group = ExtResource( 1 )
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -137,7 +140,7 @@ texture_hover = ExtResource( 2 )
 margin_top = 47.0
 margin_right = 94.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Categorias"
 align = 1
 __meta__ = {
@@ -145,9 +148,9 @@ __meta__ = {
 }
 
 [node name="Criterio" type="TextureButton" parent="Container/ContainerBotoes"]
-margin_top = 386.0
+margin_top = 349.0
 margin_right = 96.0
-margin_bottom = 456.0
+margin_bottom = 419.0
 group = ExtResource( 1 )
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 3 )
@@ -158,8 +161,29 @@ margin_left = 1.0
 margin_top = 47.0
 margin_right = 95.0
 margin_bottom = 64.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Critérios"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Escola" type="TextureButton" parent="Container/ContainerBotoes"]
+margin_top = 423.0
+margin_right = 96.0
+margin_bottom = 493.0
+group = ExtResource( 1 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="Container/ContainerBotoes/Escola"]
+margin_left = 1.0
+margin_top = 47.0
+margin_right = 95.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 5 )
+text = "Escolas"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -172,3 +196,4 @@ anims/FadeOut = SubResource( 7 )
 
 [connection signal="button_up" from="Container/ContainerBotoes/Categoria" to="." method="_on_Categoria_button_up"]
 [connection signal="button_up" from="Container/ContainerBotoes/Criterio" to="." method="_on_Criterio_button_up"]
+[connection signal="button_up" from="Container/ContainerBotoes/Escola" to="." method="_on_Escola_button_up"]

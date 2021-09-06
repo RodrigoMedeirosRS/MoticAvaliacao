@@ -37,6 +37,10 @@ namespace CTRL
 		{
 			InstanciarTab("res://RES/Cenas/Criterios.tscn", "Criterios");
 		}
+		private void _on_Escola_button_up()
+		{
+			InstanciarTab("res://RES/Cenas/Escolas.tscn", "Escolas");
+		}
 		private void InstanciarTab(string caminhoTab, string nomeTab)
 		{
 			BLL.InstanciarTab(Container, caminhoTab, nomeTab);

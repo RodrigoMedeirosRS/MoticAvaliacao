@@ -1,24 +1,24 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://RES/Cenas/BaseTab.tscn" type="PackedScene" id=1]
-[ext_resource path="res://RES/Sprites/SmallButton.png" type="Texture" id=2]
-[ext_resource path="res://RES/Sprites/SmallButtonOver.png" type="Texture" id=3]
-[ext_resource path="res://RES/Sprites/SmallButtonClick.png" type="Texture" id=4]
-[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://RES/Sprites/Button.png" type="Texture" id=6]
-[ext_resource path="res://RES/Sprites/ButtonClick.png" type="Texture" id=7]
-[ext_resource path="res://RES/Sprites/ButtonOver.png" type="Texture" id=8]
-[ext_resource path="res://RES/Sprites/Save.png" type="Texture" id=9]
-[ext_resource path="res://RES/Fontes/Karla-Regular.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://CTRL/CriteriosCTRL.cs" type="Script" id=11]
+[ext_resource path="res://CTRL/EscolasCTRL.cs" type="Script" id=1]
+[ext_resource path="res://RES/Fontes/Karla-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://RES/Sprites/ButtonOver.png" type="Texture" id=4]
+[ext_resource path="res://RES/Sprites/Save.png" type="Texture" id=5]
+[ext_resource path="res://RES/Sprites/ButtonClick.png" type="Texture" id=6]
+[ext_resource path="res://RES/Cenas/BaseTab.tscn" type="PackedScene" id=7]
+[ext_resource path="res://RES/Sprites/SmallButtonClick.png" type="Texture" id=8]
+[ext_resource path="res://RES/Sprites/Button.png" type="Texture" id=9]
+[ext_resource path="res://RES/Sprites/SmallButton.png" type="Texture" id=10]
+[ext_resource path="res://RES/Sprites/SmallButtonOver.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="StreamTexture" id=3]
 flags = 4
@@ -37,14 +37,14 @@ load_path = "res://.import/Button.png-520369dd5b57e927aa0f974eb27c0eca.stex"
 [sub_resource type="StyleBoxEmpty" id=7]
 
 [sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 10 )
+font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=9]
 size = 12
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=10]
-font_data = ExtResource( 5 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=11]
 length = 0.5
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("NovaCriterio:rect_position")
+tracks/1/path = NodePath("NovaEscola:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -77,7 +77,7 @@ tracks/1/keys = {
 resource_name = "ModalHide"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("NovaCriterio:rect_position")
+tracks/0/path = NodePath("NovaEscola:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -88,12 +88,24 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 824.719, 80 ), Vector2( 824.719, -200 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "ModalShow"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("NovaCriterio:rect_position")
+tracks/0/path = NodePath("NovaEscola:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -104,15 +116,27 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector2( 824.719, -200 ), Vector2( 824.719, 80 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
-[node name="Criterios" type="Tabs"]
+[node name="Escolas" type="Tabs"]
 margin_bottom = 24.0
-script = ExtResource( 11 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BaseTab" parent="." instance=ExtResource( 1 )]
+[node name="BaseTab" parent="." instance=ExtResource( 7 )]
 
 [node name="Corpo" type="Control" parent="."]
 margin_left = 21.0
@@ -129,7 +153,7 @@ margin_right = 333.755
 margin_bottom = 39.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Critérios Cadastrados"
+text = "Escolas Cadastradas"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -143,7 +167,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CriterioContainer" type="VBoxContainer" parent="Corpo"]
+[node name="EscolaContainer" type="VBoxContainer" parent="Corpo"]
 margin_top = 56.0
 margin_right = 1218.0
 margin_bottom = 686.0
@@ -151,27 +175,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NovaCriterio" type="TextureButton" parent="Corpo"]
+[node name="NovaEscola" type="TextureButton" parent="Corpo"]
 self_modulate = Color( 0.992157, 0.952941, 0, 1 )
 margin_left = 825.0
 margin_top = 1.0
 margin_right = 1016.0
 margin_bottom = 38.0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 6 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 9 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Corpo/NovaCriterio"]
+[node name="Label" type="Label" parent="Corpo/NovaEscola"]
 margin_left = 12.0
 margin_top = 6.0
 margin_right = 174.0
 margin_bottom = 31.0
 custom_fonts/font = SubResource( 2 )
-text = "+ Novo Critério"
+text = "+ Nova Escola"
 align = 1
 valign = 1
 
@@ -204,10 +228,10 @@ margin_left = 28.2952
 margin_top = 4.20448
 margin_right = 55.2952
 margin_bottom = 31.2045
-texture = ExtResource( 9 )
+texture = ExtResource( 5 )
 expand = true
 
-[node name="NovaCriterio" type="Control" parent="."]
+[node name="NovaEscola" type="Control" parent="."]
 margin_left = 824.719
 margin_top = -200.0
 margin_right = 824.719
@@ -216,7 +240,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="NovaCriterio"]
+[node name="ColorRect" type="ColorRect" parent="NovaEscola"]
 margin_left = 19.0
 margin_top = 3.0
 margin_right = 413.0
@@ -226,7 +250,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NomeCriterio" type="LineEdit" parent="NovaCriterio"]
+[node name="NomeEscola" type="LineEdit" parent="NovaEscola"]
 margin_left = 36.7136
 margin_top = 25.7724
 margin_right = 339.714
@@ -235,42 +259,42 @@ custom_styles/focus = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-placeholder_text = "Nome Critério"
+placeholder_text = "Nome Escola"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="NovaCriterio/NomeCriterio"]
+[node name="ColorRect" type="ColorRect" parent="NovaEscola/NomeEscola"]
 margin_top = 36.0
 margin_right = 303.0
 margin_bottom = 38.0
 color = Color( 0.14902, 0.227451, 0.321569, 1 )
 
-[node name="Descricao" type="Label" parent="NovaCriterio/NomeCriterio"]
+[node name="Descricao" type="Label" parent="NovaEscola/NomeEscola"]
 margin_top = -17.0
 margin_right = 40.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "Novo Critério:"
+text = "Nova Escola:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OK" type="TextureButton" parent="NovaCriterio"]
+[node name="OK" type="TextureButton" parent="NovaEscola"]
 margin_left = 351.929
 margin_top = 30.4898
 margin_right = 404.929
 margin_bottom = 60.4898
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 2 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 10 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NovaCriterio/OK"]
+[node name="Label" type="Label" parent="NovaEscola/OK"]
 margin_left = 9.43884
 margin_top = 5.43877
 margin_right = 42.4388
@@ -286,6 +310,6 @@ anims/FadeIn = SubResource( 11 )
 anims/ModalHide = SubResource( 12 )
 anims/ModalShow = SubResource( 13 )
 
-[connection signal="button_up" from="Corpo/NovaCriterio" to="." method="_on_NovaCriterio_button_up"]
-[connection signal="button_down" from="Corpo/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_down"]
-[connection signal="button_down" from="NovaCriterio/OK" to="." method="_on_OK_button_down"]
+[connection signal="button_up" from="Corpo/NovaEscola" to="." method="_on_NovaEscola_button_up"]
+[connection signal="button_up" from="Corpo/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
+[connection signal="button_up" from="NovaEscola/OK" to="." method="_on_OK_button_up"]
