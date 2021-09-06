@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://RES/Cenas/BaseTab.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://RES/Sprites/ButtonClick.png" type="Texture" id=5]
 [ext_resource path="res://RES/Sprites/Save.png" type="Texture" id=6]
 [ext_resource path="res://CTRL/CategoriasCTRL.cs" type="Script" id=7]
+[ext_resource path="res://RES/Fontes/Karla-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://RES/Sprites/SmallButton.png" type="Texture" id=9]
+[ext_resource path="res://RES/Sprites/SmallButtonOver.png" type="Texture" id=10]
+[ext_resource path="res://RES/Sprites/SmallButtonClick.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -28,6 +32,20 @@ load_path = "res://.import/ButtonOver.png-715accc85950da67cec91907d862114d.stex"
 flags = 4
 load_path = "res://.import/Button.png-520369dd5b57e927aa0f974eb27c0eca.stex"
 
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 2 )
+
 [sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
@@ -41,6 +59,74 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NovaCategoria:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, -200 ), Vector2( 824.719, -200 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "ModalHide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("NovaCategoria:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, 80 ), Vector2( 824.719, -200 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NovaCategoria:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "ModalShow"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("NovaCategoria:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("NovaCategoria:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, -200 ), Vector2( 824.719, 80 ) ]
 }
 
 [node name="Categorias" type="Tabs"]
@@ -144,9 +230,79 @@ margin_bottom = 31.2045
 texture = ExtResource( 6 )
 expand = true
 
+[node name="NovaCategoria" type="Control" parent="."]
+margin_left = 824.719
+margin_top = 80.0
+margin_right = 824.719
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="NovaCategoria"]
+margin_left = 19.0
+margin_top = 3.0
+margin_right = 413.0
+margin_bottom = 82.0
+color = Color( 0.870588, 0.870588, 0.870588, 1 )
+
+[node name="NomeCategoria" type="LineEdit" parent="NovaCategoria"]
+margin_left = 36.7136
+margin_top = 25.7724
+margin_right = 339.714
+margin_bottom = 60.7724
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+placeholder_text = "Nome da Categoria"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="NovaCategoria/NomeCategoria"]
+margin_top = 36.0
+margin_right = 303.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[node name="Descricao" type="Label" parent="NovaCategoria/NomeCategoria"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Nova Categoria:"
+
+[node name="OK" type="TextureButton" parent="NovaCategoria"]
+margin_left = 351.929
+margin_top = 30.4898
+margin_right = 404.929
+margin_bottom = 60.4898
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NovaCategoria/OK"]
+margin_left = 9.43884
+margin_top = 5.43877
+margin_right = 42.4388
+margin_bottom = 25.4388
+custom_fonts/font = SubResource( 11 )
+text = "OK"
+align = 1
+valign = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
 anims/FadeIn = SubResource( 6 )
+anims/ModalHide = SubResource( 12 )
+anims/ModalShow = SubResource( 13 )
 
 [connection signal="button_up" from="Corpo/NovaCategoria" to="." method="_on_NovaCategoria_button_up"]
 [connection signal="button_up" from="Corpo/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
+[connection signal="button_up" from="NovaCategoria/OK" to="." method="_on_OK_button_up"]
