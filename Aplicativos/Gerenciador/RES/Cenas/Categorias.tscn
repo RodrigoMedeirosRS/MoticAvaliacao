@@ -1,9 +1,34 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://RES/Cenas/BaseTab.tscn" type="PackedScene" id=1]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RES/Sprites/Button.png" type="Texture" id=3]
+[ext_resource path="res://RES/Sprites/ButtonOver.png" type="Texture" id=4]
+[ext_resource path="res://RES/Sprites/ButtonClick.png" type="Texture" id=5]
+[ext_resource path="res://RES/Sprites/Save.png" type="Texture" id=6]
+[ext_resource path="res://CTRL/CategoriasCTRL.cs" type="Script" id=7]
 
-[sub_resource type="Animation" id=1]
-resource_name = "FadeIn"
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/ButtonClick.png-0df33099dd6efa5822bc23080b34c78c.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/ButtonOver.png-715accc85950da67cec91907d862114d.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/Button.png-520369dd5b57e927aa0f974eb27c0eca.stex"
+
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -19,15 +44,109 @@ tracks/0/keys = {
 }
 
 [node name="Categorias" type="Tabs"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_bottom = 24.0
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BaseTab" parent="." instance=ExtResource( 1 )]
 
+[node name="Corpo" type="Control" parent="."]
+margin_left = 21.0
+margin_top = 29.0
+margin_right = 21.0
+margin_bottom = 29.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titulo" type="Label" parent="Corpo"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Categorias Cadastradas"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Corpo/Titulo"]
+margin_top = 44.0
+margin_right = 373.0
+margin_bottom = 46.0
+color = Color( 0.584314, 0.584314, 0.584314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CategoriaContainer" type="VBoxContainer" parent="Corpo"]
+margin_top = 56.0
+margin_right = 1218.0
+margin_bottom = 686.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NovaCategoria" type="TextureButton" parent="Corpo"]
+self_modulate = Color( 0.992157, 0.952941, 0, 1 )
+margin_left = 825.0
+margin_top = 1.0
+margin_right = 1016.0
+margin_bottom = 38.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Corpo/NovaCategoria"]
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 174.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "+ Nova Categoria"
+align = 1
+valign = 1
+
+[node name="SalvarAlteracoes" type="TextureButton" parent="Corpo"]
+self_modulate = Color( 0.337255, 0.960784, 0.0235294, 1 )
+margin_left = 1029.0
+margin_top = 1.0
+margin_right = 1220.0
+margin_bottom = 38.0
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 4 )
+texture_hover = SubResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Corpo/SalvarAlteracoes"]
+margin_left = 15.0
+margin_top = 6.0
+margin_right = 177.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "Salvar"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Corpo/SalvarAlteracoes"]
+margin_left = 28.2952
+margin_top = 4.20448
+margin_right = 55.2952
+margin_bottom = 31.2045
+texture = ExtResource( 6 )
+expand = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
-anims/FadeIn = SubResource( 1 )
+anims/FadeIn = SubResource( 6 )
+
+[connection signal="button_up" from="Corpo/NovaCategoria" to="." method="_on_NovaCategoria_button_up"]
+[connection signal="button_up" from="Corpo/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
