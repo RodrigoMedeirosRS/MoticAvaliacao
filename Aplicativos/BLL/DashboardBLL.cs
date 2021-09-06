@@ -1,6 +1,7 @@
 using Godot;
 using BLL.Utils;
 using BLL.Interface;
+using BLL.Constantes;
 
 namespace BLL
 {
@@ -15,6 +16,10 @@ namespace BLL
         public void LimparMenuLateral(TabContainer container)
         {
             InstanciadorUtil.DecarregarFilhos(container);
+        }
+        public void Sair()
+        {
+            Sessao.AvaliadorLogado = null;
         }
     }
 }

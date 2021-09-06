@@ -6,5 +6,6 @@ namespace BLL.Interface
     {
         void InstanciarTab(TabContainer container, string caminhoTab, string nomeTab);
         void LimparMenuLateral(TabContainer container);
+        void Sair();
     }
 }
