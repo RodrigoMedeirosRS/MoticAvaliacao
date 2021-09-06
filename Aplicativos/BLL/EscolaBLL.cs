@@ -10,23 +10,23 @@ using BLL.Constantes;
 
 namespace BLL
 {
-    public class CriterioBLL : ICriterioBLL
+    public class EscolaBLL : IEscolaBLL
     {
         private IRequisicao SAL { get ; set; }
-        public CriterioBLL()
+        public EscolaBLL()
         {
             SAL = new Requisicao();
         }
-        public List<CriterioDTO> ObterCriterios()
+        public List<EscolaDTO> ObterEscola()
         {
-            var retorno = SAL.ExecutarPost<ValorDTO, RetornoDTO<List<CriterioDTO>>>(Apontamentos.ListaCriterios, new ValorDTO());
+            var retorno = SAL.ExecutarPost<ValorDTO, RetornoDTO<List<EscolaDTO>>>(Apontamentos.ListaEscolas, new ValorDTO());
             return retorno.Conteudo;
         }
-        public void AtualizarCriterios(CriterioDTO criterio)
+        public void AtualizarEscolas(EscolaDTO escola)
         {
-            SAL.ExecutarPost<CriterioDTO, RetornoDTO<bool>>(Apontamentos.CadastrarCriterio, criterio);
+            SAL.ExecutarPost<EscolaDTO, RetornoDTO<bool>>(Apontamentos.CadastrarEscolas, escola);
         }
-        public Node IntanciarCriterio(VBoxContainer container)
+        public Node IntanciarEscola(VBoxContainer container)
         {
             var cena = InstanciadorUtil.CarregarCena("res://RES/Cenas/Criterio.tscn");
             return InstanciadorUtil.InstanciarObjeto(container, cena, null);

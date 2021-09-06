@@ -9,6 +9,8 @@ namespace BLL.Constantes
         public static string ListarCategorias { get; } = URLServidor + "Cadastro/ListarCategorias";
         public static string CadastrarCriterio { get; } = URLServidor + "Cadastro/CadastrarCriterio";
         public static string ListaCriterios { get; } = URLServidor + "Cadastro/ListarCriterios";
+        public static string CadastrarEscolas { get; } = URLServidor + "Cadastro/CadastrarEscola";
+        public static string ListaEscolas { get; } = URLServidor + "Cadastro/ListarEscolas";
 
     }
 }
