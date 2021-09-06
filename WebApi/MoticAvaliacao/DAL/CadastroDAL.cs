@@ -77,6 +77,7 @@ namespace DAL
         {
             return (from avaliador in DataContext.Avaliadors
                 where string.IsNullOrEmpty(cpf) ? true : avaliador.Cpf == cpf
+                orderby avaliador.Nome
                 select ConversorUtil.Mapear(avaliador)).AsNoTracking().ToList();
         }
         private void AtualizarAvaliador(Avaliador avaliador)
@@ -115,6 +116,7 @@ namespace DAL
         {
             return (from categoria in DataContext.Categoria
                 where string.IsNullOrEmpty(nomeCategoria) ? true : categoria.Nome == nomeCategoria
+                orderby categoria.Nome
                 select ConversorUtil.Mapear(categoria)).AsNoTracking().ToList();
         }
         private void AtualizarCategoria(Categorium categoria)
@@ -153,6 +155,7 @@ namespace DAL
         {
             return (from criterio in DataContext.Nomecriterios
                 where string.IsNullOrEmpty(nomeCriterio) ? true : criterio.Nome == nomeCriterio
+                orderby criterio.Nome
                 select ConversorUtil.Mapear(criterio)).AsNoTracking().ToList();
         }
         private void AtualizarCriterio(Nomecriterio criterio)
@@ -191,6 +194,7 @@ namespace DAL
         {
             return (from escola in DataContext.Escolas
                 where string.IsNullOrEmpty(nomeEscola) ? true : escola.Nome == nomeEscola
+                orderby escola.Nome
                 select ConversorUtil.Mapear(escola)).AsNoTracking().ToList();
         }
         private void AtualizarEscola(Escola escola)
@@ -236,6 +240,7 @@ namespace DAL
                     escola in DataContext.Escolas
                     on trabalho.Escola equals escola.Codigo
                 where string.IsNullOrEmpty(nomeTrabalho) ? true : trabalho.Nome == nomeTrabalho
+                orderby trabalho.Nome
                 select ConversorUtil.Mapear(trabalho, categoria, escola)).AsNoTracking().ToList();
         }
         private CodigoEscolaCategoriaDTO BuscarCodigoCategoriaEscola(TrabalhoDTO trabalho)

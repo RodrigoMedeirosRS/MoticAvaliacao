@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Threading;
 using System.Threading.Tasks;
 
 using BLL;
@@ -44,8 +42,8 @@ namespace CTRL
 			foreach(var categoria in categorias)
 			{
 				var nodeCategoria = CategoriaBLL.IntanciarCategoria(CategoriaContainer);
-				(nodeCategoria as CategoriaCTRL).DefinirCategoria(categoria);
 				System.Threading.Thread.Sleep(100);
+				(nodeCategoria as CategoriaCTRL).DefinirCategoria(categoria);
 			}
 		}
 		private async Task AtualizarCategorias()
@@ -67,10 +65,18 @@ namespace CTRL
 				Ativo = true
 			});
 			NomeCategoria.Text = string.Empty;
+			LimparCategorias();
+			Task.Run(async () => await PopularCategorias());
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
 			Task.Run(async () => await AtualizarCategorias());
+		}
+
+		private void LimparCategorias()
+		{
+			foreach(var categoria in CategoriaContainer.GetChildren())
+				(categoria as CategoriaCTRL).QueueFree();
 		}
 	}
 }
