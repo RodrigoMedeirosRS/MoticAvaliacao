@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://RES/Sprites/Botoes/Categoria_Hover.png" type="Texture" id=1]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RES/Sprites/Botoes/Categoria.png" type="Texture" id=3]
+[ext_resource path="res://RES/Sprites/Botoes/Categoria_Pressed.png" type="Texture" id=4]
+[ext_resource path="res://RES/Outros/ButtonDashboardGroup.tres" type="ButtonGroup" id=5]
+[ext_resource path="res://RES/Sprites/Botoes/Criterios_Pressed.png" type="Texture" id=6]
+[ext_resource path="res://RES/Sprites/Botoes/Criterios_Hover.png" type="Texture" id=7]
+[ext_resource path="res://RES/Sprites/Botoes/Criterios.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 2 )
+
+[node name="DashBoard" type="Control"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fundo" type="ColorRect" parent="Container"]
+margin_left = -21.6571
+margin_top = -17.6083
+margin_right = 95.3429
+margin_bottom = 782.392
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContainerBotoes" type="VBoxContainer" parent="Container"]
+margin_right = 93.0
+margin_bottom = 768.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Categoria" type="TextureButton" parent="Container/ContainerBotoes"]
+margin_top = 312.0
+margin_right = 96.0
+margin_bottom = 382.0
+group = ExtResource( 5 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="Container/ContainerBotoes/Categoria"]
+margin_top = 47.0
+margin_right = 94.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Categorias"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Criterio" type="TextureButton" parent="Container/ContainerBotoes"]
+margin_top = 386.0
+margin_right = 96.0
+margin_bottom = 456.0
+group = ExtResource( 5 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Container/ContainerBotoes/Criterio"]
+margin_left = 1.0
+margin_top = 47.0
+margin_right = 95.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Critérios"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

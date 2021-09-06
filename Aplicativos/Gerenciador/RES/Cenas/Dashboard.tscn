@@ -1,0 +1,174 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://RES/Outros/ButtonDashboardGroup.tres" type="ButtonGroup" id=1]
+[ext_resource path="res://RES/Sprites/Botoes/Categoria_Hover.png" type="Texture" id=2]
+[ext_resource path="res://RES/Sprites/Botoes/Criterios_Pressed.png" type="Texture" id=3]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://RES/Sprites/Botoes/Criterios_Hover.png" type="Texture" id=5]
+[ext_resource path="res://RES/Sprites/Botoes/Categoria.png" type="Texture" id=6]
+[ext_resource path="res://RES/Sprites/Botoes/Categoria_Pressed.png" type="Texture" id=7]
+[ext_resource path="res://RES/Sprites/Botoes/Criterios.png" type="Texture" id=8]
+[ext_resource path="res://CTRL/DashboardCTRL.cs" type="Script" id=9]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 10
+border_width_top = 4
+border_width_right = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_detail = 12
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 10
+border_width_top = 4
+border_width_right = 10
+border_color = Color( 1, 1, 1, 1 )
+border_blend = true
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 12
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "FadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Container:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -100, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "FadeOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Container:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -100, 0 ) ]
+}
+
+[node name="DashBoard" type="Control"]
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tabs" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Tabs"]
+margin_left = 94.0
+margin_right = 1366.0
+margin_bottom = 768.0
+custom_styles/tab_fg = SubResource( 2 )
+custom_styles/tab_bg = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_fg = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="."]
+margin_left = -100.0
+margin_right = -100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fundo" type="ColorRect" parent="Container"]
+margin_left = -21.6571
+margin_top = -17.6083
+margin_right = 95.3429
+margin_bottom = 782.392
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContainerBotoes" type="VBoxContainer" parent="Container"]
+margin_right = 93.0
+margin_bottom = 768.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Categoria" type="TextureButton" parent="Container/ContainerBotoes"]
+margin_top = 312.0
+margin_right = 96.0
+margin_bottom = 382.0
+group = ExtResource( 1 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Container/ContainerBotoes/Categoria"]
+margin_top = 47.0
+margin_right = 94.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Categorias"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Criterio" type="TextureButton" parent="Container/ContainerBotoes"]
+margin_top = 386.0
+margin_right = 96.0
+margin_bottom = 456.0
+group = ExtResource( 1 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="Container/ContainerBotoes/Criterio"]
+margin_left = 1.0
+margin_top = 47.0
+margin_right = 95.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Critérios"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+anims/FadeIn = SubResource( 6 )
+anims/FadeOut = SubResource( 7 )
+
+[connection signal="button_up" from="Container/ContainerBotoes/Categoria" to="." method="_on_Categoria_button_up"]
+[connection signal="button_up" from="Container/ContainerBotoes/Criterio" to="." method="_on_Criterio_button_up"]

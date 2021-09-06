@@ -65,8 +65,8 @@ namespace CTRL
 		}
 		private void _on_AnimationPlayer_animation_finished(String anim_name)
 		{
-			if (anim_name == "FadeOut");
-				//Vai para dashboard
+			if (anim_name == "FadeOut")
+				MainCTRL.CarregarTela("res://RES/Cenas/Dashboard.tscn");
 		}
 	}
 }

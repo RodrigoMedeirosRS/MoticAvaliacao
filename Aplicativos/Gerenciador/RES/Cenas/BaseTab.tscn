@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://CTRL/BaseTabCTRL.cs" type="Script" id=1]
+[ext_resource path="res://RES/Sprites/SmallButtonClick.png" type="Texture" id=2]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://RES/Sprites/SmallButtonOver.png" type="Texture" id=4]
+[ext_resource path="res://RES/Sprites/SmallButton.png" type="Texture" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 3 )
+
+[node name="BaseTab" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fundo" type="ColorRect" parent="."]
+margin_left = -0.42041
+margin_right = 1271.58
+margin_bottom = 743.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BordaSuperior" type="ColorRect" parent="."]
+margin_left = 17.0
+margin_top = 13.0
+margin_right = 1242.0
+margin_bottom = 16.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BordaInferior" type="ColorRect" parent="."]
+margin_left = 17.0
+margin_top = 726.0
+margin_right = 1251.0
+margin_bottom = 729.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+self_modulate = Color( 1, 0.494118, 0, 1 )
+margin_left = 1249.66
+margin_top = 8.0
+margin_right = 1261.66
+margin_bottom = 20.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureButton"]
+margin_left = 2.33264
+margin_top = -0.667419
+margin_right = 9.33264
+margin_bottom = 12.3326
+custom_fonts/font = SubResource( 1 )
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_TextureButton_button_up"]
