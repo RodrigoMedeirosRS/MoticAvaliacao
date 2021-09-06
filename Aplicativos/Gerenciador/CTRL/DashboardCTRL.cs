@@ -55,14 +55,10 @@ namespace CTRL
 		{
 			// Replace with function body.
 		}
-
-
 		private void _on_Resultados_button_up()
 		{
 			// Replace with function body.
 		}
-
-
 		private void _on_Sair_button_up()
 		{
 			BLL.Sair();

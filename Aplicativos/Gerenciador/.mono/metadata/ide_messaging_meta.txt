@@ -1,2 +1,2 @@
-﻿43509
+﻿40893
 /usr/local/myappss/Godot/Godot.3.64

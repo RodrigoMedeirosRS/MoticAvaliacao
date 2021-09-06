@@ -51,10 +51,6 @@ namespace CTRL
 			Animation.Play("ModalShow");
 			NomeEscola.Text = string.Empty;
 		}
-		private void _on_SalvarAlteracoes_button_up()
-		{
-			Task.Run(async () => await PopularEscolas());
-		}
 		private void _on_OK_button_up()
 		{
 			if (!string.IsNullOrEmpty(NomeEscola.Text))
