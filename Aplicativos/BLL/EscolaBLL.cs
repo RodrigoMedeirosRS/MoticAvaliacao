@@ -28,7 +28,7 @@ namespace BLL
         }
         public Node IntanciarEscola(VBoxContainer container)
         {
-            var cena = InstanciadorUtil.CarregarCena("res://RES/Cenas/Criterio.tscn");
+            var cena = InstanciadorUtil.CarregarCena("res://RES/Cenas/Escola.tscn");
             return InstanciadorUtil.InstanciarObjeto(container, cena, null);
         }
     }

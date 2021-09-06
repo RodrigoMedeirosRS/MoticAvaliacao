@@ -43,7 +43,7 @@ namespace CTRL
 			{
 				var nodeEscola = EscolaBLL.IntanciarEscola(EscolaContainer);
 				System.Threading.Thread.Sleep(100);
-				//(nodeEscola as CriterioCTRL).DefinirEscola(escola);
+				(nodeEscola as EscolaCTRL).DefinirEscola(escola);
 			}
 		}
 		private void _on_NovaEscola_button_up()
@@ -71,8 +71,8 @@ namespace CTRL
 		}
 		private void LimparEscolas()
 		{
-			foreach(var escola in EscolaContainer.GetChildren());
-				//(escola as CriterioCTRL).QueueFree();
+			foreach(var escola in EscolaContainer.GetChildren())
+				(escola as EscolaCTRL).QueueFree();
 		}
 	}
 }
