@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 using BLL;
@@ -44,6 +45,7 @@ namespace CTRL
 			{
 				var nodeCategoria = CategoriaBLL.IntanciarCategoria(CategoriaContainer);
 				(nodeCategoria as CategoriaCTRL).DefinirCategoria(categoria);
+				System.Threading.Thread.Sleep(100);
 			}
 		}
 		private async Task AtualizarCategorias()
