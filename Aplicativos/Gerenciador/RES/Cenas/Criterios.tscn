@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://RES/Cenas/BaseTab.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RES/Sprites/SmallButton.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://RES/Sprites/ButtonOver.png" type="Texture" id=8]
 [ext_resource path="res://RES/Sprites/Save.png" type="Texture" id=9]
 [ext_resource path="res://RES/Fontes/Karla-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://CTRL/CriteriosCTRL.cs" type="Script" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -59,10 +60,55 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("NovaCriterio:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, -200 ), Vector2( 824.719, -200 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "ModalHide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("NovaCriterio:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, 80 ), Vector2( 824.719, -200 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "ModalShow"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("NovaCriterio:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, -200 ), Vector2( 824.719, 80 ) ]
+}
 
 [node name="Criterios" type="Tabs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -79,25 +125,26 @@ __meta__ = {
 }
 
 [node name="Titulo" type="Label" parent="Corpo"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = -2.24493
+margin_right = 333.755
+margin_bottom = 39.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Categorias Cadastradas"
+text = "Critérios Cadastrados"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="Corpo/Titulo"]
 margin_top = 44.0
-margin_right = 373.0
+margin_right = 332.0
 margin_bottom = 46.0
 color = Color( 0.584314, 0.584314, 0.584314, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CategoriaContainer" type="VBoxContainer" parent="Corpo"]
+[node name="CriterioContainer" type="VBoxContainer" parent="Corpo"]
 margin_top = 56.0
 margin_right = 1218.0
 margin_bottom = 686.0
@@ -105,7 +152,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NovaCategoria" type="TextureButton" parent="Corpo"]
+[node name="NovaCriterio" type="TextureButton" parent="Corpo"]
 self_modulate = Color( 0.992157, 0.952941, 0, 1 )
 margin_left = 825.0
 margin_top = 1.0
@@ -119,13 +166,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Corpo/NovaCategoria"]
+[node name="Label" type="Label" parent="Corpo/NovaCriterio"]
 margin_left = 12.0
 margin_top = 6.0
 margin_right = 174.0
 margin_bottom = 31.0
 custom_fonts/font = SubResource( 2 )
-text = "+ Nova Categoria"
+text = "+ Novo Critério"
 align = 1
 valign = 1
 
@@ -161,23 +208,26 @@ margin_bottom = 31.2045
 texture = ExtResource( 9 )
 expand = true
 
-[node name="NovaCategoria" type="Control" parent="."]
+[node name="NovaCriterio" type="Control" parent="."]
 margin_left = 824.719
-margin_top = 80.0
+margin_top = -200.0
 margin_right = 824.719
-margin_bottom = 80.0
+margin_bottom = -200.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="NovaCategoria"]
+[node name="ColorRect" type="ColorRect" parent="NovaCriterio"]
 margin_left = 19.0
 margin_top = 3.0
 margin_right = 413.0
 margin_bottom = 82.0
 color = Color( 0.870588, 0.870588, 0.870588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="NomeCategoria" type="LineEdit" parent="NovaCategoria"]
+[node name="NomeCriterio" type="LineEdit" parent="NovaCriterio"]
 margin_left = 36.7136
 margin_top = 25.7724
 margin_right = 339.714
@@ -186,26 +236,29 @@ custom_styles/focus = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-placeholder_text = "Nome da Categoria"
+placeholder_text = "Nome Critério"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="NovaCategoria/NomeCategoria"]
+[node name="ColorRect" type="ColorRect" parent="NovaCriterio/NomeCriterio"]
 margin_top = 36.0
 margin_right = 303.0
 margin_bottom = 38.0
 color = Color( 0.14902, 0.227451, 0.321569, 1 )
 
-[node name="Descricao" type="Label" parent="NovaCategoria/NomeCategoria"]
+[node name="Descricao" type="Label" parent="NovaCriterio/NomeCriterio"]
 margin_top = -17.0
 margin_right = 40.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "Nova Categoria:"
+text = "Novo Critério:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="OK" type="TextureButton" parent="NovaCategoria"]
+[node name="OK" type="TextureButton" parent="NovaCriterio"]
 margin_left = 351.929
 margin_top = 30.4898
 margin_right = 404.929
@@ -218,7 +271,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="NovaCategoria/OK"]
+[node name="Label" type="Label" parent="NovaCriterio/OK"]
 margin_left = 9.43884
 margin_top = 5.43877
 margin_right = 42.4388
@@ -231,3 +284,9 @@ valign = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
 anims/FadeIn = SubResource( 11 )
+anims/ModalHide = SubResource( 12 )
+anims/ModalShow = SubResource( 13 )
+
+[connection signal="button_up" from="Corpo/NovaCriterio" to="." method="_on_NovaCriterio_button_up"]
+[connection signal="button_down" from="Corpo/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_down"]
+[connection signal="button_down" from="NovaCriterio/OK" to="." method="_on_OK_button_down"]

@@ -58,15 +58,18 @@ namespace CTRL
 		}
 		private void _on_OK_button_up()
 		{
-			Animation.Play("ModalHide");
-			CategoriaBLL.AtualizarCategorias(new CategoriaDTO()
+			if (!string.IsNullOrEmpty(NomeCategoria.Text))
 			{
-				Nome = NomeCategoria.Text,
-				Ativo = true
-			});
-			NomeCategoria.Text = string.Empty;
-			LimparCategorias();
-			Task.Run(async () => await PopularCategorias());
+				Animation.Play("ModalHide");
+				CategoriaBLL.AtualizarCategorias(new CategoriaDTO()
+				{
+					Nome = NomeCategoria.Text,
+					Ativo = true
+				});
+				NomeCategoria.Text = string.Empty;
+				LimparCategorias();
+				Task.Run(async () => await PopularCategorias());
+			}
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{

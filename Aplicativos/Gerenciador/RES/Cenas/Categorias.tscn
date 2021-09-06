@@ -32,21 +32,21 @@ load_path = "res://.import/ButtonOver.png-715accc85950da67cec91907d862114d.stex"
 flags = 4
 load_path = "res://.import/Button.png-520369dd5b57e927aa0f974eb27c0eca.stex"
 
+[sub_resource type="StyleBoxEmpty" id=6]
+
 [sub_resource type="StyleBoxEmpty" id=7]
 
-[sub_resource type="StyleBoxEmpty" id=8]
-
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 size = 12
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=10]
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -251,9 +251,9 @@ margin_left = 36.7136
 margin_top = 25.7724
 margin_right = 339.714
 margin_bottom = 60.7724
-custom_styles/focus = SubResource( 7 )
-custom_styles/normal = SubResource( 8 )
-custom_fonts/font = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 placeholder_text = "Nome da Categoria"
 __meta__ = {
@@ -270,7 +270,7 @@ color = Color( 0.14902, 0.227451, 0.321569, 1 )
 margin_top = -17.0
 margin_right = 40.0
 margin_bottom = -2.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
 text = "Nova Categoria:"
 
@@ -292,14 +292,14 @@ margin_left = 9.43884
 margin_top = 5.43877
 margin_right = 42.4388
 margin_bottom = 25.4388
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 10 )
 text = "OK"
 align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
-anims/FadeIn = SubResource( 6 )
+anims/FadeIn = SubResource( 11 )
 anims/ModalHide = SubResource( 12 )
 anims/ModalShow = SubResource( 13 )
 
