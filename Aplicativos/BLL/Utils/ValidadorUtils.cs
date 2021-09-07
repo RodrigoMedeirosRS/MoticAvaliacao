@@ -6,7 +6,7 @@ namespace BLL.Utils
 {
     public static class ValidadorUtils
     {
-        static internal void ValidarCPF(string cpf)
+        public static void ValidarCPF(string cpf)
         {
             ValidarQuantidadeDeDigitos(cpf);
             ValidarSomaDeDigitos(cpf);

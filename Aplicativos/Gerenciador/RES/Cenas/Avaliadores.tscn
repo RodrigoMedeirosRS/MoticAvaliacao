@@ -1,0 +1,539 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://CTRL/DadosAvaliadorCTRL.cs" type="Script" id=1]
+[ext_resource path="res://RES/Fontes/Karla-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://RES/Sprites/ButtonOver.png" type="Texture" id=4]
+[ext_resource path="res://CTRL/AvaliadoresCTRL.cs" type="Script" id=5]
+[ext_resource path="res://RES/Sprites/ButtonClick.png" type="Texture" id=6]
+[ext_resource path="res://RES/Sprites/Button.png" type="Texture" id=8]
+[ext_resource path="res://RES/Cenas/BaseTab.tscn" type="PackedScene" id=10]
+[ext_resource path="res://RES/Sprites/Save.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="StreamTexture" id=12]
+flags = 4
+load_path = "res://.import/ButtonClick.png-0df33099dd6efa5822bc23080b34c78c.stex"
+
+[sub_resource type="StreamTexture" id=13]
+flags = 4
+load_path = "res://.import/ButtonOver.png-715accc85950da67cec91907d862114d.stex"
+
+[sub_resource type="StreamTexture" id=14]
+flags = 4
+load_path = "res://.import/Button.png-520369dd5b57e927aa0f974eb27c0eca.stex"
+
+[sub_resource type="DynamicFont" id=15]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=8]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DadosAvaliador:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, -500 ), Vector2( 824.719, -500 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "ModalHide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("DadosAvaliador:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, 80 ), Vector2( 824.719, -400.011 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "ModalShow"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("DadosAvaliador:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 824.719, -400 ), Vector2( 824.719, 80 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Avaliadores" type="Tabs"]
+margin_bottom = 24.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BaseTab" parent="." instance=ExtResource( 10 )]
+
+[node name="Corpo" type="Control" parent="."]
+margin_left = 21.0
+margin_top = 29.0
+margin_right = 21.0
+margin_bottom = 29.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Titulo" type="Label" parent="Corpo"]
+margin_left = -2.24493
+margin_right = 333.755
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Avaliadores Cadastrados"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Corpo/Titulo"]
+margin_top = 44.0
+margin_right = 383.0
+margin_bottom = 46.0
+color = Color( 0.584314, 0.584314, 0.584314, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Legenda" type="Control" parent="Corpo/Titulo"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="Label" parent="Corpo/Titulo/Legenda"]
+margin_top = 66.0
+margin_right = 33.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+text = "Nome"
+
+[node name="Admin" type="Label" parent="Corpo/Titulo/Legenda"]
+margin_left = 432.0
+margin_top = 66.0
+margin_right = 469.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+text = "Admin"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editar" type="Label" parent="Corpo/Titulo/Legenda"]
+margin_left = 480.0
+margin_top = 66.0
+margin_right = 517.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+text = "Editar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AvaliadorContainer" type="VBoxContainer" parent="Corpo"]
+margin_top = 82.0
+margin_right = 520.0
+margin_bottom = 686.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NovoAvaliador" type="TextureButton" parent="Corpo"]
+self_modulate = Color( 0.992157, 0.952941, 0, 1 )
+margin_left = 825.0
+margin_top = 1.0
+margin_right = 1016.0
+margin_bottom = 38.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Corpo/NovoAvaliador"]
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 174.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 2 )
+text = "+ Novo Avaliador"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SalvarAlteracoes" type="TextureButton" parent="Corpo"]
+self_modulate = Color( 0.337255, 0.960784, 0.0235294, 1 )
+margin_left = 1029.0
+margin_top = 1.0
+margin_right = 1220.0
+margin_bottom = 38.0
+texture_normal = SubResource( 12 )
+texture_pressed = SubResource( 13 )
+texture_hover = SubResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Corpo/SalvarAlteracoes"]
+margin_left = 15.0
+margin_top = 6.0
+margin_right = 177.0
+margin_bottom = 31.0
+custom_fonts/font = SubResource( 15 )
+text = "Salvar"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Corpo/SalvarAlteracoes"]
+margin_left = 28.2952
+margin_top = 4.20448
+margin_right = 55.2952
+margin_bottom = 31.2045
+texture = ExtResource( 11 )
+expand = true
+
+[node name="DadosAvaliador" type="Control" parent="."]
+margin_left = 824.719
+margin_top = -500.0
+margin_right = 824.719
+margin_bottom = -500.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="DadosAvaliador"]
+margin_left = -233.0
+margin_right = 413.0
+margin_bottom = 269.0
+color = Color( 0.870588, 0.870588, 0.870588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="LineEdit" parent="DadosAvaliador"]
+margin_left = -219.0
+margin_top = 28.0
+margin_right = 17.0
+margin_bottom = 63.0
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+placeholder_text = "Nome do avaliador"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="DadosAvaliador/Nome"]
+margin_top = 36.0
+margin_right = 236.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[node name="Descricao" type="Label" parent="DadosAvaliador/Nome"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Nome:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sobrenome" type="LineEdit" parent="DadosAvaliador"]
+margin_left = 34.0
+margin_top = 28.0
+margin_right = 396.0
+margin_bottom = 63.0
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+placeholder_text = "Sobrenome do avaliador"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="DadosAvaliador/Sobrenome"]
+margin_top = 36.0
+margin_right = 361.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Descricao" type="Label" parent="DadosAvaliador/Sobrenome"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Sobrenome:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPF" type="LineEdit" parent="DadosAvaliador"]
+margin_left = -220.0
+margin_top = 92.0
+margin_right = -105.0
+margin_bottom = 127.0
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+max_length = 11
+placeholder_text = "00000000000"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="DadosAvaliador/CPF"]
+margin_top = 36.0
+margin_right = 115.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[node name="Descricao" type="Label" parent="DadosAvaliador/CPF"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "CPF:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Email" type="LineEdit" parent="DadosAvaliador"]
+margin_left = -87.0
+margin_top = 92.0
+margin_right = 393.0
+margin_bottom = 127.0
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+placeholder_text = "email@provedor.com"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="DadosAvaliador/Email"]
+margin_top = 36.0
+margin_right = 481.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Descricao" type="Label" parent="DadosAvaliador/Email"]
+margin_left = -0.667419
+margin_top = -17.0
+margin_right = 97.3326
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "E-Mail:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Telefone" type="LineEdit" parent="DadosAvaliador"]
+margin_left = -219.0
+margin_top = 160.0
+margin_right = 17.0
+margin_bottom = 195.0
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+placeholder_text = "(51)00000-0000"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="DadosAvaliador/Telefone"]
+margin_top = 36.0
+margin_right = 236.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[node name="Descricao" type="Label" parent="DadosAvaliador/Telefone"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Telefone:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Senha" type="LineEdit" parent="DadosAvaliador"]
+margin_left = 34.0
+margin_top = 160.0
+margin_right = 396.0
+margin_bottom = 195.0
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+placeholder_text = "Senha que o avaliador usará para logar no APP"
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="DadosAvaliador/Senha"]
+margin_top = 36.0
+margin_right = 361.0
+margin_bottom = 38.0
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Descricao" type="Label" parent="DadosAvaliador/Senha"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Senha de Acesso ao Sistema:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OK" type="TextureButton" parent="DadosAvaliador"]
+margin_left = -11.0
+margin_top = 221.0
+margin_right = 192.0
+margin_bottom = 251.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DadosAvaliador/OK"]
+margin_left = 9.43884
+margin_top = 5.43877
+margin_right = 42.4388
+margin_bottom = 25.4388
+custom_fonts/font = SubResource( 7 )
+text = "Finalizar Preenchimento"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "FadeIn"
+anims/FadeIn = SubResource( 8 )
+anims/ModalHide = SubResource( 9 )
+anims/ModalShow = SubResource( 10 )
+
+[connection signal="button_up" from="Corpo/NovoAvaliador" to="." method="_on_NovoAvaliador_button_up"]
+[connection signal="button_up" from="Corpo/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_up"]
+[connection signal="button_up" from="DadosAvaliador/OK" to="." method="_on_OK_button_up"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://RES/Sprites/AvaliadorComum.png" type="Texture" id=1]
+[ext_resource path="res://RES/Fontes/Karla-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://RES/Sprites/AvaliadorAdministrador.png" type="Texture" id=3]
+[ext_resource path="res://RES/Sprites/Editar.png" type="Texture" id=4]
+[ext_resource path="res://RES/Sprites/Editar_Pressed.png" type="Texture" id=5]
+[ext_resource path="res://RES/Outros/AvaliadorButtonGroup.tres" type="ButtonGroup" id=6]
+[ext_resource path="res://CTRL/AvaliadorCTRL.cs" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[node name="Avaliador" type="Control"]
+margin_right = 432.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 0, 29 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="Label" parent="."]
+margin_top = 4.0
+margin_right = 431.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nome Completo Avaliador"
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = -0.00139955
+anchor_top = -0.0193529
+anchor_right = -0.00139955
+anchor_bottom = -0.0193529
+margin_left = 0.561218
+margin_top = 24.5612
+margin_right = 431.561
+margin_bottom = 26.5612
+color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Administrador" type="TextureButton" parent="."]
+self_modulate = Color( 0.470588, 0.470588, 0.470588, 1 )
+margin_left = 437.44
+margin_top = 0.878883
+margin_right = 462.44
+margin_bottom = 25.8789
+toggle_mode = true
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Editar" type="TextureButton" parent="."]
+self_modulate = Color( 0.470588, 0.470588, 0.470588, 1 )
+margin_left = 483.44
+margin_top = 0.878883
+margin_right = 508.44
+margin_bottom = 25.8789
+group = ExtResource( 6 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="button_up" from="Editar" to="." method="_on_Editar_button_up"]

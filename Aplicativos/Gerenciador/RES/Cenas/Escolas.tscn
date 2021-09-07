@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://CTRL/EscolasCTRL.cs" type="Script" id=1]
 [ext_resource path="res://RES/Fontes/Karla-Regular.ttf" type="DynamicFontData" id=2]
@@ -16,24 +16,28 @@ size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 20
-font_data = ExtResource( 3 )
-
-[sub_resource type="StyleBoxEmpty" id=3]
-
-[sub_resource type="StyleBoxEmpty" id=4]
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=6]
 size = 12
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
+size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=9]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -60,8 +64,7 @@ tracks/1/keys = {
 "values": [ Vector2( 824.719, -200 ), Vector2( 824.719, -200 ) ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "ModalHide"
+[sub_resource type="Animation" id=10]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NovaEscola:rect_position")
@@ -88,8 +91,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "ModalShow"
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NovaEscola:rect_position")
@@ -154,9 +156,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Legenda" type="Control" parent="Corpo/Titulo"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="Label" parent="Corpo/Titulo/Legenda"]
+margin_top = 66.0
+margin_right = 33.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+text = "Nome"
+
 [node name="EscolaContainer" type="VBoxContainer" parent="Corpo"]
-margin_top = 56.0
-margin_right = 1218.0
+margin_top = 85.0
+margin_right = 543.0
 margin_bottom = 686.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -181,7 +198,7 @@ margin_left = 12.0
 margin_top = 6.0
 margin_right = 174.0
 margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "+ Nova Escola"
 align = 1
 valign = 1
@@ -213,11 +230,13 @@ margin_left = 36.7136
 margin_top = 25.7724
 margin_right = 339.714
 margin_bottom = 60.7724
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 placeholder_text = "Nome Escola"
+caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -232,7 +251,7 @@ color = Color( 0.14902, 0.227451, 0.321569, 1 )
 margin_top = -17.0
 margin_right = 40.0
 margin_bottom = -2.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
 text = "Nova Escola:"
 __meta__ = {
@@ -257,16 +276,16 @@ margin_left = 9.43884
 margin_top = 5.43877
 margin_right = 42.4388
 margin_bottom = 25.4388
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "OK"
 align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
-anims/FadeIn = SubResource( 8 )
-anims/ModalHide = SubResource( 9 )
-anims/ModalShow = SubResource( 10 )
+anims/FadeIn = SubResource( 9 )
+anims/ModalHide = SubResource( 10 )
+anims/ModalShow = SubResource( 11 )
 
 [connection signal="button_up" from="Corpo/NovaEscola" to="." method="_on_NovaEscola_button_up"]
 [connection signal="button_up" from="NovaEscola/OK" to="." method="_on_OK_button_up"]

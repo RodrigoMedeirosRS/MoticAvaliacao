@@ -45,7 +45,7 @@ namespace CTRL
 		}
 		private void _on_Avaliador_button_up()
 		{
-			// Replace with function body.
+			InstanciarTab("res://RES/Cenas/Avaliadores.tscn", "Avaliadores");
 		}
 		private void _on_Trabalhos_button_up()
 		{

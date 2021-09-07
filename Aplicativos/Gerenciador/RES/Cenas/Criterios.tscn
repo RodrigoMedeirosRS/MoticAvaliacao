@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://RES/Cenas/BaseTab.tscn" type="PackedScene" id=1]
 [ext_resource path="res://RES/Sprites/SmallButton.png" type="Texture" id=2]
@@ -17,36 +17,40 @@ size = 32
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 20
-font_data = ExtResource( 5 )
-
-[sub_resource type="StreamTexture" id=3]
-flags = 4
-load_path = "res://.import/ButtonClick.png-0df33099dd6efa5822bc23080b34c78c.stex"
-
-[sub_resource type="StreamTexture" id=4]
-flags = 4
-load_path = "res://.import/ButtonOver.png-715accc85950da67cec91907d862114d.stex"
-
-[sub_resource type="StreamTexture" id=5]
-flags = 4
-load_path = "res://.import/Button.png-520369dd5b57e927aa0f974eb27c0eca.stex"
-
-[sub_resource type="StyleBoxEmpty" id=6]
-
-[sub_resource type="StyleBoxEmpty" id=7]
-
-[sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 10 )
-
-[sub_resource type="DynamicFont" id=9]
 size = 12
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=3]
+size = 20
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/ButtonClick.png-0df33099dd6efa5822bc23080b34c78c.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/ButtonOver.png-715accc85950da67cec91907d862114d.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/Button.png-520369dd5b57e927aa0f974eb27c0eca.stex"
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=12]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -73,8 +77,7 @@ tracks/1/keys = {
 "values": [ Vector2( 824.719, -200 ), Vector2( 824.719, -200 ) ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "ModalHide"
+[sub_resource type="Animation" id=13]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NovaCriterio:rect_position")
@@ -89,8 +92,7 @@ tracks/0/keys = {
 "values": [ Vector2( 824.719, 80 ), Vector2( 824.719, -200 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "ModalShow"
+[sub_resource type="Animation" id=14]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("NovaCriterio:rect_position")
@@ -143,9 +145,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Legenda" type="Control" parent="Corpo/Titulo"]
+margin_left = 2.24493
+margin_right = 42.2449
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nome" type="Label" parent="Corpo/Titulo/Legenda"]
+margin_top = 66.0
+margin_right = 33.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+text = "Nome"
+
+[node name="Ativo" type="Label" parent="Corpo/Titulo/Legenda"]
+margin_left = 402.0
+margin_top = 66.0
+margin_right = 432.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+text = "Ativo"
+
 [node name="CriterioContainer" type="VBoxContainer" parent="Corpo"]
-margin_top = 56.0
-margin_right = 1218.0
+margin_top = 84.0
+margin_right = 464.0
 margin_bottom = 686.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -170,7 +197,7 @@ margin_left = 12.0
 margin_top = 6.0
 margin_right = 174.0
 margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "+ Novo Critério"
 align = 1
 valign = 1
@@ -181,9 +208,9 @@ margin_left = 1029.0
 margin_top = 1.0
 margin_right = 1220.0
 margin_bottom = 38.0
-texture_normal = SubResource( 3 )
-texture_pressed = SubResource( 4 )
-texture_hover = SubResource( 5 )
+texture_normal = SubResource( 4 )
+texture_pressed = SubResource( 5 )
+texture_hover = SubResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -194,7 +221,7 @@ margin_left = 15.0
 margin_top = 6.0
 margin_right = 177.0
 margin_bottom = 31.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Salvar"
 align = 1
 valign = 1
@@ -231,11 +258,13 @@ margin_left = 36.7136
 margin_top = 25.7724
 margin_right = 339.714
 margin_bottom = 60.7724
-custom_styles/focus = SubResource( 6 )
-custom_styles/normal = SubResource( 7 )
-custom_fonts/font = SubResource( 8 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 placeholder_text = "Nome Critério"
+caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -250,7 +279,7 @@ color = Color( 0.14902, 0.227451, 0.321569, 1 )
 margin_top = -17.0
 margin_right = 40.0
 margin_bottom = -2.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
 text = "Novo Critério:"
 __meta__ = {
@@ -275,16 +304,16 @@ margin_left = 9.43884
 margin_top = 5.43877
 margin_right = 42.4388
 margin_bottom = 25.4388
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 text = "OK"
 align = 1
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
-anims/FadeIn = SubResource( 11 )
-anims/ModalHide = SubResource( 12 )
-anims/ModalShow = SubResource( 13 )
+anims/FadeIn = SubResource( 12 )
+anims/ModalHide = SubResource( 13 )
+anims/ModalShow = SubResource( 14 )
 
 [connection signal="button_up" from="Corpo/NovaCriterio" to="." method="_on_NovaCriterio_button_up"]
 [connection signal="button_down" from="Corpo/SalvarAlteracoes" to="." method="_on_SalvarAlteracoes_button_down"]

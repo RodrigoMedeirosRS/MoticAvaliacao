@@ -132,8 +132,10 @@ margin_bottom = 243.0
 custom_styles/focus = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 placeholder_text = "CPF"
+caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,9 +162,11 @@ margin_bottom = 324.764
 custom_styles/focus = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
+custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
 secret = true
 placeholder_text = "SENHA"
+caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
