@@ -1,5 +1,12 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+using DTO;
+using BLL;
+using BLL.Utils;
+using BLL.Interface;
 
 namespace CTRL
 {
@@ -7,16 +14,18 @@ namespace CTRL
 	{
 		private static AnimationPlayer Animation { get; set; }
 		private static DadosAvaliadorCTRL DadosAvaliador { get; set; }
+		private static VBoxContainer Container { get; set; }
+		private static IAvaliadoresBLL BLL { get; set; }
 		public override void _Ready()
 		{
 			PopularNodes();
 			RealizarInjecaoDeDependencias();
 			DesativarFuncoesDeAltoProcessamento();
-			//Task.Run(async () => await PopularCategorias());
+			Task.Run(async () => await PopularAvaliadores());
 		}
 		private void RealizarInjecaoDeDependencias()
 		{
-			
+			BLL = new AvaliadoresBLL();
 		}
 		private void DesativarFuncoesDeAltoProcessamento()
 		{
@@ -28,6 +37,32 @@ namespace CTRL
 			Animation = GetNode<AnimationPlayer>("./AnimationPlayer");
 			var dadosAvaliador = GetNode<Control>("./DadosAvaliador");
 			DadosAvaliador = (dadosAvaliador as DadosAvaliadorCTRL);
+			Container = GetNode<VBoxContainer>("./Corpo/AvaliadorContainer");
+		}
+		private async Task PopularAvaliadores()
+		{
+			var avaliadores = BLL.ObterAvaliadores();
+
+			foreach(var avaliador in avaliadores)
+			{
+				var nodeAvaliador = BLL.IntanciarAvalaidores(Container);
+				System.Threading.Thread.Sleep(100);
+				(nodeAvaliador as AvaliadorCTRL).DefinirAvaliador(avaliador);
+			}
+		}
+		private async Task AtualizarAvaliadores()
+		{
+			foreach(var avaliador in Container.GetChildren())
+				BLL.AtualizarAvaliadores((avaliador as AvaliadorCTRL).ObterAvaliador());
+		}
+		private async Task AtualizarAvaliador(AvaliadorDTO avaliador)
+		{
+			BLL.AtualizarAvaliadores(avaliador);
+		}
+		private void LimparAvaliadores()
+		{
+			foreach(var avaliador in Container.GetChildren())
+				(avaliador as AvaliadorCTRL).QueueFree();
 		}
 		private void _on_NovoAvaliador_button_up()
 		{
@@ -35,7 +70,7 @@ namespace CTRL
 		}
 		private void _on_SalvarAlteracoes_button_up()
 		{
-			// Replace with function body.
+			Task.Run(async () => await AtualizarAvaliadores());
 		}
 		private void _on_OK_button_up()
 		{
@@ -43,13 +78,18 @@ namespace CTRL
 			{
 				var avaliador = DadosAvaliador.ObterDadosAvaliador();
 				Animation.Play("ModalHide");
+				DadosAvaliador.LimparDados();
+				BLL.AtualizarAvaliadores(avaliador);
+				LimparAvaliadores();
+				Task.Run(async () => await PopularAvaliadores());	
 			}
 		}
-		public static void EditarAvaliador()
+		public static void EditarAvaliador(AvaliadorDTO avaliadorDTO = null)
 		{
 			if (PodeEditar())
 			{
 				DadosAvaliador.LimparDados();
+				DadosAvaliador.PopularDados(avaliadorDTO);
 				Animation.Play("ModalShow");
 			}
 		}

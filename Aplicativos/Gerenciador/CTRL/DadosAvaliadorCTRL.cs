@@ -41,6 +41,17 @@ namespace CTRL
 			Telefone.Text = string.Empty;
 			Senha.Text = string.Empty;
 		}
+		public void PopularDados(AvaliadorDTO avaliadorDTO)
+		{
+			if (avaliadorDTO == null)
+				return;
+			Nome.Text = avaliadorDTO.Nome;
+			Sobrenome.Text = avaliadorDTO.Sobrenome;
+			CPF.Text = avaliadorDTO.CPF;
+			Email.Text = avaliadorDTO.Email;
+			Telefone.Text = avaliadorDTO.Telefone;
+			Senha.Text = avaliadorDTO.Senha;
+		}
 		public bool ValidarPreenchimento()
 		{
 			var preenchimento = !string.IsNullOrEmpty(Nome.Text);

@@ -12,7 +12,7 @@ PRIMARY KEY(codigo));
 CREATE TABLE nomecriterio (
   codigo SERIAL  NOT NULL ,
   nome VARCHAR(100) UNIQUE  NOT NULL ,
-  peso INTEGER UNIQUE  NOT NULL ,
+  peso INTEGER  NOT NULL ,
   ativo BOOL   NOT NULL   ,
 PRIMARY KEY(codigo));
 
