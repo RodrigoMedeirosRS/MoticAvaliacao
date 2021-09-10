@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://RES/Sprites/ButtonClick.png" type="Texture" id=2]
 [ext_resource path="res://RES/Sprites/ButtonOver.png" type="Texture" id=3]
@@ -47,10 +47,28 @@ font_data = ExtResource( 9 )
 size = 12
 font_data = ExtResource( 8 )
 
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=14]
+bg_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.14902, 0.227451, 0.321569, 0.8 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+
+[sub_resource type="DynamicFont" id=18]
+font_data = ExtResource( 8 )
+
 [sub_resource type="DynamicFont" id=12]
 font_data = ExtResource( 8 )
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=19]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -77,7 +95,7 @@ tracks/1/keys = {
 "values": [ Vector2( 824.719, -500 ), Vector2( 824.719, -500 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=20]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("DadosTrabalho:rect_position")
@@ -104,7 +122,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=21]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("DadosTrabalho:rect_position")
@@ -272,33 +290,37 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="DadosTrabalho"]
 margin_left = -233.0
 margin_right = 413.0
-margin_bottom = 269.0
+margin_bottom = 208.0
 color = Color( 0.870588, 0.870588, 0.870588, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Nome" type="LineEdit" parent="DadosTrabalho"]
-margin_left = -219.0
-margin_top = 28.0
-margin_right = 17.0
-margin_bottom = 63.0
+margin_left = -213.0
+margin_top = 29.0
+margin_right = 278.0
+margin_bottom = 64.0
 custom_styles/focus = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
 custom_fonts/font = SubResource( 10 )
 custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-placeholder_text = "Nome do avaliador"
+placeholder_text = "Nome do Trabalho"
 caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="DadosTrabalho/Nome"]
-margin_top = 36.0
-margin_right = 236.0
-margin_bottom = 38.0
+margin_left = -1.0
+margin_top = 35.0
+margin_right = 491.0
+margin_bottom = 37.0
 color = Color( 0.14902, 0.227451, 0.321569, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Descricao" type="Label" parent="DadosTrabalho/Nome"]
 margin_top = -17.0
@@ -306,192 +328,107 @@ margin_right = 40.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "Nome:"
+text = "Nome do Trabalho:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sobrenome" type="LineEdit" parent="DadosTrabalho"]
-margin_left = 34.0
+[node name="CategoriaDropown" type="OptionButton" parent="DadosTrabalho"]
+margin_left = -214.0
+margin_top = 106.0
+margin_right = 77.0
+margin_bottom = 135.0
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Descricao" type="Label" parent="DadosTrabalho/CategoriaDropown"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Categoria:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EscolaDropdown" type="OptionButton" parent="DadosTrabalho"]
+margin_left = 103.641
+margin_top = 106.498
+margin_right = 394.641
+margin_bottom = 135.498
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+custom_fonts/font = SubResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Descricao" type="Label" parent="DadosTrabalho/EscolaDropdown"]
+margin_top = -17.0
+margin_right = 40.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
+text = "Escola:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ano" type="LineEdit" parent="DadosTrabalho"]
+margin_left = 289.0
 margin_top = 28.0
-margin_right = 396.0
+margin_right = 395.0
 margin_bottom = 63.0
 custom_styles/focus = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
 custom_fonts/font = SubResource( 10 )
 custom_colors/cursor_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-placeholder_text = "Sobrenome do avaliador"
+align = 1
+max_length = 4
+placeholder_text = "2022"
 caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="DadosTrabalho/Sobrenome"]
+[node name="ColorRect" type="ColorRect" parent="DadosTrabalho/Ano"]
 margin_top = 36.0
-margin_right = 361.0
+margin_right = 106.0
 margin_bottom = 38.0
 color = Color( 0.14902, 0.227451, 0.321569, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Descricao" type="Label" parent="DadosTrabalho/Sobrenome"]
+[node name="Descricao" type="Label" parent="DadosTrabalho/Ano"]
+margin_left = 5.0
 margin_top = -17.0
-margin_right = 40.0
+margin_right = 100.0
 margin_bottom = -2.0
 custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "Sobrenome:"
+text = "Ano do Trabalho:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CPF" type="LineEdit" parent="DadosTrabalho"]
-margin_left = -220.0
-margin_top = 92.0
-margin_right = -105.0
-margin_bottom = 127.0
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
-custom_colors/cursor_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-max_length = 11
-placeholder_text = "00000000000"
-caret_blink = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="DadosTrabalho/CPF"]
-margin_top = 36.0
-margin_right = 115.0
-margin_bottom = 38.0
-color = Color( 0.14902, 0.227451, 0.321569, 1 )
-
-[node name="Descricao" type="Label" parent="DadosTrabalho/CPF"]
-margin_top = -17.0
-margin_right = 40.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "CPF:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Email" type="LineEdit" parent="DadosTrabalho"]
-margin_left = -87.0
-margin_top = 92.0
-margin_right = 393.0
-margin_bottom = 127.0
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
-custom_colors/cursor_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-placeholder_text = "email@provedor.com"
-caret_blink = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="DadosTrabalho/Email"]
-margin_top = 36.0
-margin_right = 481.0
-margin_bottom = 38.0
-color = Color( 0.14902, 0.227451, 0.321569, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Descricao" type="Label" parent="DadosTrabalho/Email"]
-margin_left = -0.667419
-margin_top = -17.0
-margin_right = 97.3326
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "E-Mail:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Telefone" type="LineEdit" parent="DadosTrabalho"]
-margin_left = -219.0
-margin_top = 160.0
-margin_right = 17.0
-margin_bottom = 195.0
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
-custom_colors/cursor_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-placeholder_text = "(51)00000-0000"
-caret_blink = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="DadosTrabalho/Telefone"]
-margin_top = 36.0
-margin_right = 236.0
-margin_bottom = 38.0
-color = Color( 0.14902, 0.227451, 0.321569, 1 )
-
-[node name="Descricao" type="Label" parent="DadosTrabalho/Telefone"]
-margin_top = -17.0
-margin_right = 40.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "Telefone:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Senha" type="LineEdit" parent="DadosTrabalho"]
-margin_left = 34.0
-margin_top = 160.0
-margin_right = 396.0
-margin_bottom = 195.0
-custom_styles/focus = SubResource( 8 )
-custom_styles/normal = SubResource( 9 )
-custom_fonts/font = SubResource( 10 )
-custom_colors/cursor_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0.470588, 0.470588, 0.470588, 1 )
-placeholder_text = "Senha que o avaliador usará para logar no APP"
-caret_blink = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="DadosTrabalho/Senha"]
-margin_top = 36.0
-margin_right = 361.0
-margin_bottom = 38.0
-color = Color( 0.14902, 0.227451, 0.321569, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Descricao" type="Label" parent="DadosTrabalho/Senha"]
-margin_top = -17.0
-margin_right = 40.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 11 )
-custom_colors/font_color = Color( 0.14902, 0.227451, 0.321569, 1 )
-text = "Senha de Acesso ao Sistema:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="OK" type="TextureButton" parent="DadosTrabalho"]
-margin_left = -11.0
-margin_top = 221.0
-margin_right = 192.0
-margin_bottom = 251.0
+[node name="OK" type="TextureButton" parent="."]
+margin_left = 813.719
+margin_top = -345.0
+margin_right = 1016.72
+margin_bottom = -315.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 5 )
@@ -500,7 +437,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="DadosTrabalho/OK"]
+[node name="Label" type="Label" parent="OK"]
 margin_left = 9.43884
 margin_top = 5.43877
 margin_right = 42.4388
@@ -512,6 +449,6 @@ valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "FadeIn"
-anims/FadeIn = SubResource( 13 )
-anims/ModalHide = SubResource( 14 )
-anims/ModalShow = SubResource( 15 )
+anims/FadeIn = SubResource( 19 )
+anims/ModalHide = SubResource( 20 )
+anims/ModalShow = SubResource( 21 )
