@@ -75,4 +75,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="toggled" from="Administrador" to="." method="_on_Administrador_toggled"]
 [connection signal="button_up" from="Editar" to="." method="_on_Editar_button_up"]

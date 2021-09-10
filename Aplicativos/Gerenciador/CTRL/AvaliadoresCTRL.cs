@@ -56,14 +56,7 @@ namespace CTRL
 			foreach(var avaliador in Container.GetChildren())
 			{
 				var avaliadorCTRL = (avaliador as AvaliadorCTRL);
-				BLL.AtualizarAvaliadores(avaliadorCTRL.ObterAvaliador());
-				if (avaliadorCTRL.Admin.Pressed != avaliadorCTRL.EhAdmin)
-					BLL.AtualizarAcessoAdmin(new AlterarAcessoAdministradorDTO()
-					{
-						Avaliador = avaliadorCTRL.ObterAvaliador(),
-						ChaveDeAcesso = Apontamentos.ChaveDeAcesso
-					});
-					
+				BLL.AtualizarAvaliadores(avaliadorCTRL.ObterAvaliador());		
 			}
 		}
 		private async Task AtualizarAvaliador(AvaliadorDTO avaliador)
@@ -78,10 +71,6 @@ namespace CTRL
 		private void _on_NovoAvaliador_button_up()
 		{
 			EditarAvaliador();
-		}
-		private void _on_SalvarAlteracoes_button_up()
-		{
-			Task.Run(async () => await AtualizarAvaliadores());
 		}
 		private void _on_OK_button_up()
 		{
@@ -107,6 +96,14 @@ namespace CTRL
 		public static bool PodeEditar()
 		{
 			return DadosAvaliador.RectPosition.y != 80;
+		}
+		public static void AtualizarAdmin(bool admin, AvaliadorDTO avaliadorDTO)
+		{
+			BLL.AtualizarAcessoAdmin(new AlterarAcessoAdministradorDTO()
+			{
+				Avaliador = avaliadorDTO,
+				ChaveDeAcesso = Apontamentos.ChaveDeAcesso
+			});	
 		}
 	}
 }

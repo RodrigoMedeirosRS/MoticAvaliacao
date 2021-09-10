@@ -8,7 +8,7 @@ namespace DAL.Interface
     {
         void AlterarAcessoDeAdministrador(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO);
         void CadastrarAvaliador(AvaliadorDTO criterioDTO);
-        List<AvaliadorDTO> ListarAvaliador(string nomeCriterio = "");
+        List<AvaliadorDTO> ListarAvaliador();
         void CadastrarCategoria(CategoriaDTO criterioDTO);
         List<CategoriaDTO> ListarCategoria(string nomeCriterio = "");
         void CadastrarCriterio(CriterioDTO criterioDTO);

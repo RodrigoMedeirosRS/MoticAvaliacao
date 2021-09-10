@@ -73,10 +73,9 @@ namespace DAL
             else
                 InserirAvaliador(novoAvaliador);
         }
-        public List<AvaliadorDTO> ListarAvaliador(string cpf = "")
+        public List<AvaliadorDTO> ListarAvaliador()
         {
             return (from avaliador in DataContext.Avaliadors
-                where string.IsNullOrEmpty(cpf) ? true : avaliador.Cpf == cpf
                 orderby avaliador.Nome
                 select ConversorUtil.Mapear(avaliador)).AsNoTracking().ToList();
         }

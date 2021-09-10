@@ -15,7 +15,7 @@ namespace DAL.Utils
                 Nome = avaliador.Nome,
                 Sobrenome = avaliador.Sobrenome,
                 CPF = avaliador.Cpf,
-                Senha = "",
+                Senha = avaliador.Senha,
                 Email = avaliador.Email,
                 Telefone = avaliador.Telefone
             };

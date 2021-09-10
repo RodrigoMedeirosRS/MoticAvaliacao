@@ -49,7 +49,8 @@ namespace BLL
         
         public async Task<RetornoDTO<List<AvaliadorDTO>>> ListarAvaliadores(ValorDTO cpf = null)
         {
-            return new RetornoDTO<List<AvaliadorDTO>>(DAL.ListarAvaliador(cpf.Valor));
+            ValidarChaveDeAcesso(cpf.Valor);
+            return new RetornoDTO<List<AvaliadorDTO>>(DAL.ListarAvaliador());
         }
         public async Task<RetornoDTO<List<CategoriaDTO>>> ListarCategorias(ValorDTO nomeCategoria = null)
         {
