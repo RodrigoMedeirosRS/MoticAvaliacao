@@ -22,6 +22,10 @@ namespace BLL
             var retorno = SAL.ExecutarPost<ValorDTO, RetornoDTO<List<AvaliadorDTO>>>(Apontamentos.ListarAvaliadores, new ValorDTO());
             return retorno.Conteudo;
         }
+        public void AtualizarAcessoAdmin(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO)
+        {
+            SAL.ExecutarPost<AlterarAcessoAdministradorDTO, RetornoDTO<bool>>(Apontamentos.AlterarAcessoAdministrador, alterarAcessoAdministradorDTO);
+        }
         public void AtualizarAvaliadores(AvaliadorDTO avaliador)
         {
             SAL.ExecutarPost<AvaliadorDTO, RetornoDTO<bool>>(Apontamentos.CadastrarAvaliadores, avaliador);

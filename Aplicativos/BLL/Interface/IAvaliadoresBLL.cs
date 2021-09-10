@@ -9,6 +9,7 @@ namespace BLL.Interface
     {
         List<AvaliadorDTO> ObterAvaliadores();
         void AtualizarAvaliadores(AvaliadorDTO avaliador);
+        void AtualizarAcessoAdmin(AlterarAcessoAdministradorDTO alterarAcessoAdministradorDTO);
         Node IntanciarAvalaidores(VBoxContainer container);
     }
 }

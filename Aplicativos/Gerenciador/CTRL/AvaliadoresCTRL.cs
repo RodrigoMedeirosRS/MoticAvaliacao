@@ -7,6 +7,7 @@ using DTO;
 using BLL;
 using BLL.Utils;
 using BLL.Interface;
+using BLL.Constantes;
 
 namespace CTRL
 {
@@ -53,7 +54,17 @@ namespace CTRL
 		private async Task AtualizarAvaliadores()
 		{
 			foreach(var avaliador in Container.GetChildren())
-				BLL.AtualizarAvaliadores((avaliador as AvaliadorCTRL).ObterAvaliador());
+			{
+				var avaliadorCTRL = (avaliador as AvaliadorCTRL);
+				BLL.AtualizarAvaliadores(avaliadorCTRL.ObterAvaliador());
+				if (avaliadorCTRL.Admin.Pressed != avaliadorCTRL.EhAdmin)
+					BLL.AtualizarAcessoAdmin(new AlterarAcessoAdministradorDTO()
+					{
+						Avaliador = avaliadorCTRL.ObterAvaliador(),
+						ChaveDeAcesso = Apontamentos.ChaveDeAcesso
+					});
+					
+			}
 		}
 		private async Task AtualizarAvaliador(AvaliadorDTO avaliador)
 		{
