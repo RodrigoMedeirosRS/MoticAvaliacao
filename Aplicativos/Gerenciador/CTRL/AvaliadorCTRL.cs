@@ -19,7 +19,6 @@ namespace CTRL
 			PopularNodes();
 			RealizarInjecaoDeDependencias();
 			DesativarFuncoesDeAltoProcessamento();
-			Task.Run(async () => await PopularAdmin());
 		}
 		private void PopularNodes()
 		{
@@ -39,6 +38,7 @@ namespace CTRL
 		{
 			Nome.Text = avaliadorDTO.Nome + " " + avaliadorDTO.Sobrenome;
 			Avaliador = avaliadorDTO;
+			Task.Run(async () => await PopularAdmin());
 		}
 		public AvaliadorDTO ObterAvaliador()
 		{
